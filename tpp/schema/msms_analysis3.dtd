@@ -1,0 +1,389 @@
+<!-- test DTD - Document Type Definition for msms_analysis XML 
+ $Id: msms_analysis3.dtd 741 2005-06-20 17:42:30Z dshteyn $
+-->
+
+<!ELEMENT msms_pipeline_analysis (peptideprophet_summary*, interact_summary*, asapratio_summary*, xpressratio_summary*, dataset_derivation?, msms_run_summary+)>
+<!ATTLIST msms_pipeline_analysis
+        name                           CDATA #IMPLIED 
+        date                           CDATA #REQUIRED 
+        summary_xml                    CDATA #REQUIRED >
+
+
+<!ELEMENT msms_run_summary (search_summary, database_refresh_timestamp?, asapratio_timestamp?, peptideprophet_timestamp?, xpressratio_timestamp?, search_result+)>
+<!ATTLIST msms_run_summary
+        base_name                      CDATA #REQUIRED
+        search_engine                  CDATA #REQUIRED 
+        msManufacturer                 CDATA #IMPLIED
+        msModel                        CDATA #IMPLIED
+        msIonisation                   CDATA #IMPLIED
+        msMassAnalyzer                 CDATA #IMPLIED
+        msDetector                     CDATA #IMPLIED
+        database                       CDATA #REQUIRED 
+        raw_data_type                  CDATA #REQUIRED     
+        raw_data                       CDATA #REQUIRED
+        out_data_type                  CDATA #REQUIRED
+        out_data                       CDATA #REQUIRED  
+	sample_enzyme                  CDATA #REQUIRED >
+
+
+<!ELEMENT search_summary (enzymatic_search_constraint?, sequence_search_constraint*, aminoacid_modification*, terminal_modification*, parameter*)>
+<!ATTLIST search_summary
+        base_name                       CDATA #REQUIRED
+        search_engine                   CDATA #REQUIRED 
+        precursor_mass_type             CDATA #REQUIRED
+        fragment_mass_type              CDATA #REQUIRED >
+
+
+<!ELEMENT search_result (search_hit+)>
+<!ATTLIST search_result
+        spectrum                       CDATA #REQUIRED
+        start_scan                     CDATA #REQUIRED
+        end_scan                       CDATA #REQUIRED
+        precursor_neutral_mass         CDATA #REQUIRED
+        assumed_charge                 CDATA #REQUIRED 
+        index                          CDATA #REQUIRED >
+
+<!ELEMENT search_hit (modification_info?, search_score*, alternative_protein*, peptideprophet_result?, asapratio_result?, xpressratio_result?)>
+<!ATTLIST search_hit
+        hit_rank                       CDATA #REQUIRED
+        peptide                        CDATA #REQUIRED
+        peptide_prev_aa                CDATA #IMPLIED
+        peptide_next_aa                CDATA #IMPLIED
+        protein                        CDATA #REQUIRED
+        num_tot_proteins               CDATA #REQUIRED
+        num_matched_ions               CDATA #IMPLIED
+        tot_num_ions                   CDATA #IMPLIED 
+        calc_neutral_pep_mass          CDATA #REQUIRED
+        massdiff                       CDATA #REQUIRED 
+        num_tol_term                   CDATA #IMPLIED
+        num_missed_cleavages           CDATA #IMPLIED
+        is_rejected                    CDATA #REQUIRED 
+        protein_descr                  CDATA #IMPLIED 
+        calc_pI                        CDATA #IMPLIED >
+
+
+<!ELEMENT modification_info (mod_aminoacid_mass*)>
+<!ATTLIST modification_info
+        mod_nterm_mass                 CDATA #IMPLIED
+        mod_cterm_mass                 CDATA #IMPLIED
+        modified_peptide               CDATA #IMPLIED >
+
+<!ELEMENT mod_aminoacid_mass EMPTY>
+<!ATTLIST mod_aminoacid_mass
+        position                       CDATA #REQUIRED
+        mass                           CDATA #REQUIRED >
+
+
+
+<!ELEMENT search_score EMPTY>
+<!ATTLIST search_score
+        name                           CDATA #REQUIRED
+        value                          CDATA #REQUIRED 
+        type                           CDATA #IMPLIED >
+
+<!ELEMENT dataset_derivation (data_filter*)>
+<!ATTLIST dataset_derivation
+        generation_no                  CDATA #REQUIRED >
+
+<!ELEMENT data_filter                  EMPTY>
+<!ATTLIST data_filter
+        number                         CDATA #REQUIRED
+        parent_file                    CDATA #REQUIRED
+        windows_parent                 CDATA #IMPLIED
+        description                    CDATA #REQUIRED >       
+
+
+
+<!ELEMENT aminoacid_modification EMPTY>
+<!ATTLIST aminoacid_modification
+        aminoacid                      CDATA #REQUIRED 
+	massdiff                       CDATA #REQUIRED
+        mass                           CDATA #REQUIRED 
+        variable                       CDATA #REQUIRED
+        symbol                         CDATA #IMPLIED 
+        binary                         CDATA #IMPLIED   
+        description                    CDATA #IMPLIED >  
+
+<!ELEMENT terminal_modification EMPTY>
+<!ATTLIST terminal_modification
+        terminus                       CDATA #REQUIRED
+	massdiff                       CDATA #REQUIRED 
+        mass                           CDATA #REQUIRED 
+        variable                       CDATA #REQUIRED 
+        symbol                         CDATA #IMPLIED 
+        protein_terminus               CDATA #REQUIRED  
+        description                    CDATA #IMPLIED > 
+
+
+
+<!ELEMENT enzymatic_search_constraint EMPTY>
+<!ATTLIST enzymatic_search_constraint
+        enzyme                           CDATA #REQUIRED 
+        max_num_internal_cleavages       CDATA #REQUIRED
+	min_number_termini               CDATA #REQUIRED >
+
+<!ELEMENT sequence_search_constraint EMPTY>
+<!ATTLIST sequence_search_constraint
+        sequence                         CDATA #REQUIRED >
+
+
+<!--     always with respect to current database (refresh if exists)                -->
+<!ELEMENT alternative_protein EMPTY>
+<!ATTLIST alternative_protein 
+        protein                        CDATA #REQUIRED
+        protein_descr                  CDATA #IMPLIED
+	num_tol_term                   CDATA #REQUIRED >
+
+
+<!ELEMENT libra_summary (libra_timestamp, mz_channel*)>
+<!ATTLIST libra_summary
+        version                       CDATA #REQUIRED 
+        author                        CDATA #REQUIRED 
+        normalization                 CDATA #REQUIRED
+        tolerance                     CDATA #REQUIRED >
+
+<!ELEMENT libra_timestamp EMPTY>
+<!ATTLIST libra_timestamp
+        time                          CDATA #REQUIRED >
+
+<!ELEMENT mz_channel EMPTY>
+<!ATTLIST mz_channel
+        id                            CDATA #REQUIRED
+        mz                            CDATA #REQUIRED >
+
+<!ELEMENT libra_result (channel_sequence+)>
+<!ATTLIST libra_result
+
+>
+
+<!ELEMENT channel_sequence (channel_intensity+)>
+<!ATTLIST channel_sequence
+        id                            CDATA #REQUIRED >
+
+
+
+<!ELEMENT channel_intensity (channel_ratio*)>
+<!ATTLIST channel_intensity
+        id                            CDATA #REQUIRED
+        mz                            CDATA #REQUIRED
+        intensity                     CDATA #REQUIRED >
+
+
+<!ELEMENT channel_ratio EMPTY>
+<!ATTLIST channel_ratio
+        id_ref                        CDATA #REQUIRED
+        ratio                         CDATA #REQUIRED >
+
+
+
+<!ELEMENT database_refresh_timestamp EMPTY>
+<!ATTLIST database_refresh_timestamp
+        time                          CDATA #REQUIRED 
+        database                      CDATA #REQUIRED 
+        min_num_enz_term              CDATA #IMPLIED >
+
+
+<!ELEMENT peptideprophet_result (search_score_summary?)>
+<!ATTLIST peptideprophet_result
+        probability                    CDATA #REQUIRED 
+        all_ntt_prob                   CDATA #IMPLIED  <!-- ntt0,ntt1,ntt2 -->
+        analysis                       CDATA #IMPLIED >
+
+<!ELEMENT search_score_summary (parameter+)>
+<!ATTLIST search_score_summary >
+
+<!ELEMENT peptideprophet_timestamp EMPTY>
+<!ATTLIST peptide_prophet_timestamp
+        time                          CDATA #REQUIRED >
+
+
+<!ELEMENT peptideprophet_summary (peptideprophet_timestamp, roc_data_point*, 
+                                  error_point*, distribution_point*, mixture_model*) >
+<!ATTLIST peptideprophet_summary
+        version                        CDATA #REQUIRED
+        author                         CDATA #REQUIRED 
+        inputfiles                     CDATA #REQUIRED
+        min_prob                       CDATA #REQUIRED
+        model_options                  CDATA #IMPLIED
+        est_tot_num_correct                CDATA #IMPLIED
+ 
+
+<!ELEMENT roc_data_point EMPTY>
+<!ATTLIST roc_data_point
+        min_prob                       CDATA #REQUIRED
+        sensitivity                    CDATA #REQUIRED
+        error                          CDATA #REQUIRED 
+        num_corr                       CDATA #REQUIRED
+        num_incorr                     CDATA #REQUIRED >
+
+<!ELEMENT error_point EMPTY>
+<!ATTLIST error_point
+        error                          CDATA #REQUIRED
+        min_prob                       CDATA #REQUIRED 
+        num_corr                       CDATA #REQUIRED
+        num_incorr                     CDATA #REQUIRED >
+
+<!ELEMENT distribution_point EMPTY>
+<!ATTLIST distribution_point
+        fvalue                         CDATA #REQUIRED
+        obs_1_distr                    CDATA #REQUIRED
+        model_1_pos_distr              CDATA #REQUIRED
+        model_1_neg_distr              CDATA #REQUIRED
+        obs_2_distr                    CDATA #REQUIRED
+        model_2_pos_distr              CDATA #REQUIRED
+        model_2_neg_distr              CDATA #REQUIRED
+        obs_3_distr                    CDATA #REQUIRED
+        model_3_pos_distr              CDATA #REQUIRED
+        model_3_neg_distr              CDATA #REQUIRED >
+
+<!ELEMENT mixture_model (mixturemodel_distribution+)>
+<!ATTLIST mixture_model
+        precursor_ion_charge           CDATA #REQUIRED
+        comments                       CDATA #REQUIRED  
+        prior_probability              CDATA #REQUIRED 
+        est_tot_correct                CDATA #REQUIRED
+        tot_num_spectra                CDATA #REQUIRED
+        num_iterations                 CDATA #REQUIRED >
+
+<!ELEMENT mixturemodel_distribution (posmodel_distribution, negmodel_distribution)>
+<!ATTLIST model_distribution
+        name                           CDATA #REQUIRED  
+>
+
+
+<!ELEMENT posmodel_distribution (parameter+)>
+<!ATTLIST posmodel_distribution
+        type                           CDATA #REQUIRED  
+>
+
+<!ELEMENT negmodel_distribution (parameter+)>
+<!ATTLIST negmodel_distribution
+        type                           CDATA #REQUIRED 
+>
+
+
+<!ELEMENT parameter EMPTY>
+<!ATTLIST parameter
+        name                           CDATA #REQUIRED  
+        value                          CDATA #REQUIRED 
+        type                           CDATA #IMPLIED >
+
+<!ELEMENT interact_summary EMPTY>
+<!ATTLIST interact_summary
+        time                           CDATA #REQUIRED
+        filename                       CDATA #REQUIRED
+        directory                      CDATA #REQUIRED
+        inputfiles                     CDATA #REQUIRED >
+
+
+
+<!ELEMENT asapratio_result (asapratio_peptide_data)>
+<!ATTLIST asapratio_result
+        mean                           CDATA #REQUIRED
+        error                          CDATA #REQUIRED 
+        heavy2light_mean               CDATA #REQUIRED
+        heavy2light_error              CDATA #REQUIRED >
+
+<!ELEMENT asapratio_peptide_data (asapratio_contribution+)>
+<!ATTLIST asapratio_peptide_data
+        status                         CDATA #REQUIRED
+        cidIndex                       CDATA #REQUIRED
+        light_mass                     CDATA #REQUIRED
+        heavy_mass                     CDATA #REQUIRED
+        area_flag                      CDATA #REQUIRED >
+
+<!ELEMENT asapratio_contribution (asapratio_lc_lightpeak, asapratio_lc_heavypeak)>
+<!ATTLIST asapratio_contribution
+        ratio                          CDATA #REQUIRED
+        error                          CDATA #REQUIRED
+        charge                         CDATA #REQUIRED
+        use                            CDATA #REQUIRED >
+
+<!ELEMENT asapratio_lc_lightpeak EMPTY >
+<!ATTLIST asapratio_lc_lightpeak
+        status                         CDATA #REQUIRED
+        left_valley                    CDATA #REQUIRED
+        right_valley                   CDATA #REQUIRED
+        background                     CDATA #REQUIRED
+        area                           CDATA #REQUIRED
+        area_error                     CDATA #REQUIRED
+        time                           CDATA #REQUIRED
+        time_width                     CDATA #REQUIRED
+        is_heavy                       CDATA #REQUIRED >
+
+<!ELEMENT asapratio_lc_heavypeak EMPTY >
+<!ATTLIST asapratio_lc_heavypeak
+        status                         CDATA #REQUIRED
+        left_valley                    CDATA #REQUIRED
+        right_valley                   CDATA #REQUIRED
+        background                     CDATA #REQUIRED
+        area                           CDATA #REQUIRED
+        area_error                     CDATA #REQUIRED
+        time                           CDATA #REQUIRED
+        time_width                     CDATA #REQUIRED
+        is_heavy                       CDATA #REQUIRED >
+
+
+
+<!ELEMENT asapratio_summary (asapratio_timestamp, peptide_modification*)>
+<!ATTLIST asapratio_summary 
+        version                        CDATA #REQUIRED
+        author                         CDATA #REQUIRED 
+	elution                        CDATA #REQUIRED
+	labeled_residues               CDATA #REQUIRED 
+	area_flag                      CDATA #REQUIRED 
+	static_quant                   CDATA #REQUIRED >
+
+
+<!ELEMENT asapratio_timestamp EMPTY>
+<!ATTLIST asapratio_timestamp
+        time                          CDATA #REQUIRED 
+        light_labels                  CDATA #IMPLIED
+        heavy_labels                  CDATA #IMPLIED 
+        static_quant_label            CDATA #IMPLIED >
+
+<!ELEMENT peptide_modification EMPTY>
+<!ATTLIST peptide_modification
+        name                          CDATA #REQUIRED
+	symbol                        CDATA #REQUIRED
+	mass_shift                    CDATA #REQUIRED >
+
+
+
+<!ELEMENT xpressratio_result EMPTY>
+<!ATTLIST xpressratio_result 
+        light_firstscan                CDATA #REQUIRED
+        light_lastscan                 CDATA #REQUIRED
+        light_mass                     CDATA #REQUIRED
+        heavy_firstscan                CDATA #REQUIRED
+        heavy_lastscan                 CDATA #REQUIRED
+        heavy_mass                     CDATA #REQUIRED
+        mass_tol                       CDATA #REQUIRED
+        ratio                          CDATA #REQUIRED
+        heavy2light_ratio              CDATA #REQUIRED
+        light_area                     CDATA #REQUIRED
+        heavy_area                     CDATA #REQUIRED 
+        decimal_ratio                  CDATA #REQUIRED >
+
+
+
+
+<!ELEMENT xpressratio_timestamp EMPTY>
+<!ATTLIST xpressratio_timestamp
+        time                          CDATA #REQUIRED 
+        xpress_light                  CDATA #REQUIRED
+>
+
+<!ELEMENT xpressratio_summary (xpressratio_timestamp, peptide_modification*)>
+<!ATTLIST xpressratio_summary 
+        version                        CDATA #REQUIRED
+        author                         CDATA #REQUIRED 
+        same_scan_range                CDATA #REQUIRED
+        labeled_residues               CDATA #REQUIRED
+        xpress_light                   CDATA #REQUIRED
+        massdiff                       CDATA #REQUIRED
+        masstol                        CDATA #REQUIRED >
+        
+
+
+

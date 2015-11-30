@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--edited with XMLSPY rel. 3U  (2004)-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+		  MS/MS pipeline analysis schema. Developed by ISB proteome center.
+		  </xs:documentation>
+	</xs:annotation>
+	<xs:element name="msms_pipeline_analysis">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="analysis_summary" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dataset_derivation" minOccurs="0"/>
+				<xs:element ref="msms_run_summary" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Summary name (currently not used)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="date" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Date pepXML file was written</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="summary_xml" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Full path self reference</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!-- this is the group that msms_pipeline_analysis refer to-->
+	<xs:group name="analysis_summary">
+		<xs:annotation>
+			<xs:documentation>Completed analyses of search result dataset</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element ref="peptideprophet_summary" minOccurs="0"/>
+			<xs:element ref="asapratio_summary" minOccurs="0"/>
+			<xs:element ref="xpressratio_summary" minOccurs="0"/>
+			<xs:element name="interact_summary" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Combined datasets</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="time" type="xs:string" use="required"/>
+					<xs:attribute name="filename" type="xs:string" use="required"/>
+					<xs:attribute name="directory" type="xs:string" use="required"/>
+					<xs:attribute name="inputfiles" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+	<xs:element name="dataset_derivation">
+		<xs:annotation>
+			<xs:documentation>Source and filtering criteria used to generate dataset</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="data_filter" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="number" type="xs:nonNegativeInteger" use="required"/>
+						<xs:attribute name="parent_file" type="xs:string" use="required"/>
+						<xs:attribute name="windows_parent" type="xs:string"/>
+						<xs:attribute name="description" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="generation_no" type="xs:nonNegativeInteger" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="msms_run_summary">
+		<xs:annotation>
+			<xs:documentation>Search results for LC/MS/MS run</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="database_refresh_timestamp" minOccurs="0"/>
+				<xs:element ref="search_summary"/>
+				<xs:group ref="analysis_timestamp" minOccurs="0"/>
+				<xs:element ref="search_result" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="msInstrument" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>General information about the MS instrument. (cf. mzXML msInstrument)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="msManufacturer">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="ontologyEntryType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="msModel" type="ontologyEntryType"/>
+							<xs:element name="msIonisation" type="ontologyEntryType"/>
+							<xs:element name="msMassAnalyzer">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="ontologyEntryType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="base_name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>full path file name of mzXML (minus the .mzXML)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="search_engine" type="engineType" use="required">
+				<xs:annotation>
+					<xs:documentation>SEQUEST, Mascot, COMET, etc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="database" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Full path reference to search database</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="raw_data_type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>raw data type extension (e.g. .mzXML)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="raw_data" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>raw data type extension (e.g. .mzXML)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="out_data_type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Format of file storing the runner up peptides (if not present in pepXML)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="out_data" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>runner up search hit data type extension (e.g. .tgz)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sample_enzyme" type="enzymeType" use="required">
+				<xs:annotation>
+					<xs:documentation>Enzyme sample was treated with prior to MS/MS (if none, use nonspecific)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:keyref name="pepprophet_time_ref" refer="pepprophet_time_key">
+			<xs:selector xpath="analysis_timestamp/peptideprophet_timestamp"/>
+			<xs:field xpath="@time"/>
+		</xs:keyref>
+		<xs:keyref name="asap_time_ref" refer="asap_time_key">
+			<xs:selector xpath="analysis_timestamp/asapratio_timestamp"/>
+			<xs:field xpath="@time"/>
+		<!--	<xs:field xpath="@light_labels"/>
+			<xs:field xpath="@heavy_labels"/> -->
+		</xs:keyref>
+		<xs:keyref name="xpress_time_ref" refer="xpress_time_key">
+			<xs:selector xpath="analysis_timestamp/xpressratio_timestamp"/>
+			<xs:field xpath="@time"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:group name="analysis_timestamp">
+		<xs:annotation>
+			<xs:documentation>Unique reference to analysis summary</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+<!--			<xs:element ref="database_refresh_timestamp" minOccurs="0"/>  -->
+			<xs:element ref="peptideprophet_timestamp" minOccurs="0"/>
+			<xs:element ref="asapratio_timestamp" minOccurs="0"/>
+			<xs:element ref="xpressratio_timestamp" minOccurs="0"/>
+		</xs:all>
+	</xs:group>
+	<!--following timestamp elements are refered in different places.-->
+	<xs:element name="database_refresh_timestamp">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="database" type="xs:string" use="required"/>
+			<xs:attribute name="min_num_enz_term" type="xs:nonNegativeInteger"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="peptideprophet_timestamp">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="xpressratio_timestamp">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="xpress_light" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_timestamp">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="quant_label_masses" type="xs:string"/>
+	<!-- 		<xs:attribute name="light_labels" type="xs:string"/>
+			<xs:attribute name="heavy_labels" type="xs:string"/> -->
+			<xs:attribute name="static_quant_label" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<!--finished first level elements definition, start from the second level-->
+	<!--from element msms_pipeline_analysis-->
+	<xs:element name="peptideprophet_summary">
+		<xs:annotation>
+			<xs:documentation>Validation of search results</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="peptideprophet_timestamp"/>
+				<xs:element name="roc_data_point" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="min_prob" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Filter threshold</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="sensitivity" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted sensitivity</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="error" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted false positive error rate</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="num_corr" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted number of correct results passing filter</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="num_incorr" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted number of incorrect results passing filter</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="error_point" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="error" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted false positive error rate</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="min_prob" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Filter threshold</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="num_corr" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted number of correct results passing filter</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="num_incorr" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>Predicted number of incorrect results passing filter</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="distribution_point" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="fvalue" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Discriminant Score (fval) bin</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="obs_1_distr" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Number of 1+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_1_pos_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of correct 1+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_1_neg_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of incorrect 1+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="obs_2_distr" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Number of 2+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_2_pos_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of correct 2+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_2_neg_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of incorrect 2+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="obs_3_distr" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Number of 3+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_3_pos_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of correct 3+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="model_3_neg_distr" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Inferred number of incorrect 3+ spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="mixture_model" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="mixturemodel_distribution" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="posmodel_distribution">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="parameter" maxOccurs="unbounded"/>
+												</xs:sequence>
+												<xs:attribute name="type" type="model_dis_type"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="negmodel_distribution">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="parameter" maxOccurs="unbounded"/>
+												</xs:sequence>
+												<xs:attribute name="type" type="model_dis_type"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="precursor_ion_charge" type="xs:nonNegativeInteger" use="required"/>
+						<xs:attribute name="comments" type="xs:string" use="required"/>
+						<xs:attribute name="prior_probability" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Fraction of results inferred to be correct</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="est_tot_correct" type="xs:float" use="required"/>
+						<xs:attribute name="tot_num_spectra" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Number of input spectra</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="num_iterations" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Number of EM interations prior to convergence</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="author" type="xs:string" use="required"/>
+			<xs:attribute name="inputfiles" type="xs:string" use="required"/>
+			<xs:attribute name="min_prob" type="xs:float" use="required">
+				<xs:annotation>
+					<xs:documentation>Min probability to be included in output</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="options" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>User specified run options</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="est_tot_num_correct" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Total inferred number of correct results</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:key name="pepprophet_time_key">
+			<xs:selector xpath="./peptideprophet_timestamp"/>
+			<xs:field xpath="@time"/>
+		</xs:key>
+	</xs:element>
+	<xs:element name="parameter" type="nameValueType"/>
+	<xs:element name="asapratio_summary">
+		<xs:annotation>
+			<xs:documentation>Quantitation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="asapratio_timestamp"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="author" type="xs:string" use="required"/>
+			<xs:attribute name="elution" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>Elution order of light vs heavy labeled peptide</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="labeled_residues" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Aminoacids and termini that are differentially labeled for quantitaiton</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="area_flag" type="xs:nonNegativeInteger" use="required"/>
+			<xs:attribute name="static_quant" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Y if dataset is all light or heavy labeled, N if dataset is mixed heavy and light labeled</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:key name="asap_time_key">
+			<xs:selector xpath="./asapratio_timestamp"/>
+			<xs:field xpath="@time"/>
+			<!-- I had to add these to make the schema valid AK 9.24.04 -->
+			<!-- <xs:field xpath="@light_labels"/> -->
+			<!--  I had to add these to make the schema valid AK 9.24.04 -->
+			<!-- <xs:field xpath="@heavy_labels"/> -->
+		</xs:key>
+	</xs:element>
+	<xs:element name="xpressratio_summary">
+		<xs:annotation>
+			<xs:documentation>Quantitation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="xpressratio_timestamp"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="author" type="xs:string" use="required"/>
+			<xs:attribute name="same_scan_range" type="xs:string" use="required"/>
+			<xs:attribute name="labeled_residues" type="xs:string" use="required"/>
+			<xs:attribute name="xpress_light" type="xs:unsignedInt" use="required"/>
+			<xs:attribute name="massdiff" type="xs:string" use="required"/>
+			<xs:attribute name="masstol" type="xs:float" use="required"/>
+		</xs:complexType>
+		<xs:key name="xpress_time_key">
+			<xs:selector xpath="xpressratio_timestamp"/>
+			<xs:field xpath="@time"/>
+		</xs:key>
+	</xs:element>
+	<!-- third level description-->
+	<xs:element name="search_summary">
+		<xs:annotation>
+			<xs:documentation>Database search settings</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="enzymatic_search_constraint" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Required peptide termini</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="enzyme" type="enzymeType" use="required"/>
+						<xs:attribute name="max_num_internal_cleavages" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Maximum number of enzyme cleavage sites allowable within peptide</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="min_number_termini" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>Minimum number of termini compatible with enzymatic cleavage</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="sequence_search_constraint" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Required amino acid string</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="sequence" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Required amino acid string</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="aminoacid_modification" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Modified aminoacid, static or variable</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="aminoacid" type="xs:string" use="required"/>
+						<xs:attribute name="massdiff" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Mass difference with respect to unmodified aminoacid, must begin with either + (nonnegative) or - [e.g. +1.05446 or -2.3342]</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="mass" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Mass of modified aminoacid</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="variable" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Y if both modified and unmodified aminoacid could be present in the dataset, N if only modified aminoacid can be present</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="protein_terminus" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>whether modification can reside only at protein terminus (specified 'n', 'c', or 'nc')</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="symbol" type="aa_symbolType">
+							<xs:annotation>
+								<xs:documentation>Special symbol used by search engine to designate this modification</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="binary" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Y if each peptide must have only modified or unmodified aminoacid, N if a peptide may contain both modified and unmodified aminoacid</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="description" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="terminal_modification" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Modification to the N or C terminus, static or variable</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="terminus" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>n for N-terminus, c for C-terminus</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="massdiff" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Mass difference with respect to unmodified terminus</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="mass" type="xs:float" use="required">
+							<xs:annotation>
+								<xs:documentation>Mass of modified terminus</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="variable" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Y if both modified and unmodified terminus could be present in the dataset, N if only modified terminus can be present</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="symbol" type="term_symbolType">
+							<xs:annotation>
+								<xs:documentation>Special symbol used by search engine to designate this modification</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="protein_terminus" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>whether modification can reside only at protein terminus (specified n or c)</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="description" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="base_name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Full path location of mzXML file for this search run (without the .mzXML extension)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="search_engine" type="engineType" use="required">
+				<xs:annotation>
+					<xs:documentation>SEQUEST, Mascot, COMET, etc</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="precursor_mass_type" type="massType" use="required">
+				<xs:annotation>
+					<xs:documentation>average or monoisotopic</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="fragment_mass_type" type="massType" use="required">
+				<xs:annotation>
+					<xs:documentation>average or monoisotopic</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="search_result">
+		<xs:annotation>
+			<xs:documentation>MS/MS spectrum, precursor ion charge and mass</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="search_hit" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="spectrum" type="xs:string" use="required"/>
+			<xs:attribute name="start_scan" type="xs:unsignedInt" use="required">
+				<xs:annotation>
+					<xs:documentation>first scan number integrated into MS/MS spectrum</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="end_scan" type="xs:unsignedInt" use="required">
+				<xs:annotation>
+					<xs:documentation>last scan number integrated into MS/MS spectrum</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="precursor_neutral_mass" type="xs:float" use="required"/>
+			<xs:attribute name="assumed_charge" type="xs:nonNegativeInteger" use="required">
+				<xs:annotation>
+					<xs:documentation>Precursor ion charge used for search</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="index" type="positiveInt" use="required">
+				<xs:annotation>
+					<xs:documentation>Unique identifier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="search_hit">
+		<xs:annotation>
+			<xs:documentation>Peptide assignment</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="alternative_protein" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="modification_info" minOccurs="0"/>
+				<xs:element ref="search_score" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:group ref="analysis_result_group" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="hit_rank" type="xs:positiveInteger" use="required"/>
+			<xs:attribute name="peptide" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Peptide aminoacid sequence (with no indicated modifications)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="peptide_prev_aa" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Aminoacid preceding peptide (- if none)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="peptide_next_aa" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Aminoacid following peptide (- if none)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="protein" type="xs:string" use="required"/>
+			<xs:attribute name="num_tot_proteins" type="xs:unsignedInt" use="required">
+				<xs:annotation>
+					<xs:documentation>Number of unique proteins in search database containing peptide</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="num_matched_ions" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Number of peptide fragment ions found in spectrum</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="tot_num_ions" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Number of peptide fragment ions predicted for peptide</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="calc_neutral_pep_mass" type="xs:float" use="required"/>
+			<xs:attribute name="massdiff" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Mass(precursor ion) - Mass(peptide)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="num_tol_term" type="xs:nonNegativeInteger" use="required">
+				<xs:annotation>
+					<xs:documentation>Number of peptide termini consistent with cleavage by sample enzyme</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="num_missed_cleavages" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Number of sample enzyme cleavage sites internal to peptide</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="is_rejected" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>Potential use in future for user manual validation (0 or 1)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="protein_descr" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Extracted from search database</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="calc_pI" type="xs:string"/>
+			<xs:attribute name="protein_mw" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="analysis_result_group">
+		<xs:annotation>
+			<xs:documentation>Subsequent analysis of search result</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element ref="peptideprophet_result" minOccurs="0"/>
+			<xs:element ref="xpressratio_result" minOccurs="0"/>
+			<xs:element ref="asapratio_result" minOccurs="0"/>
+		</xs:all>
+	</xs:group>
+	<xs:element name="modification_info">
+		<xs:annotation>
+			<xs:documentation>Positions and masses of modifications</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="mod_aminoacid_mass" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="position" type="xs:nonNegativeInteger" use="required">
+							<xs:annotation>
+								<xs:documentation>modified aminoacid position in peptide [ranging from 1 to peptide length]</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="mass" type="xs:double" use="required">
+							<xs:annotation>
+								<xs:documentation>modified mass of aminoacid</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="mod_nterm_mass" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Mass of modified N terminus</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="mod_cterm_mass" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Mass of modified C terminus</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="modified_peptide" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Peptide sequence (with indicated modifications)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="search_score" type="nameValueType"/>
+	<xs:element name="alternative_protein">
+		<xs:annotation>
+			<xs:documentation>Other protein in search database that contains peptide</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="protein" type="xs:string" use="required"/>
+			<xs:attribute name="protein_descr" type="xs:string"/>
+			<xs:attribute name="num_tol_term" type="xs:nonNegativeInteger" use="required"/>
+			<xs:attribute name="protein_mw" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="peptideprophet_result">
+		<xs:annotation>
+			<xs:documentation>Validation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="search_score_summary" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="probability" type="xs:float" use="required"/>
+			<xs:attribute name="all_ntt_prob" type="xs:string"/>
+			<xs:attribute name="analysis" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="search_score_summary">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="parameter" minOccurs="2" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_result">
+		<xs:annotation>
+			<xs:documentation>Quantitation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="asapratio_peptide_data"/>
+			</xs:sequence>
+			<xs:attribute name="mean" type="xs:float" use="required"/>
+			<xs:attribute name="error" type="xs:float" use="required"/>
+			<xs:attribute name="heavy2light_mean" type="xs:float" use="required"/>
+			<xs:attribute name="heavy2light_error" type="xs:float" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_peptide_data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="asapratio_contribution" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="status" type="xs:byte" use="required"/>
+			<xs:attribute name="cidIndex" type="xs:int" use="required"/>
+			<xs:attribute name="light_mass" type="xs:float" use="required"/>
+			<xs:attribute name="heavy_mass" type="xs:float" use="required"/>
+			<xs:attribute name="area_flag" type="xs:unsignedInt" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_contribution">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="asapratio_lc_lightpeak"/>
+				<xs:element ref="asapratio_lc_heavypeak"/>
+			</xs:sequence>
+			<xs:attribute name="ratio" type="xs:float" use="required"/>
+			<xs:attribute name="error" type="xs:float" use="required"/>
+			<xs:attribute name="charge" type="xs:nonNegativeInteger" use="required"/>
+			<xs:attribute name="use" type="xs:unsignedByte" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_lc_lightpeak">
+		<xs:complexType>
+			<xs:attributeGroup ref="asapratio_peak"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asapratio_lc_heavypeak">
+		<xs:complexType>
+			<xs:attributeGroup ref="asapratio_peak"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="asapratio_peak">
+		<xs:attribute name="status" type="xs:byte" use="required"/>
+		<xs:attribute name="left_valley" type="xs:int" use="required"/>
+		<xs:attribute name="right_valley" type="xs:int" use="required"/>
+		<xs:attribute name="background" type="xs:float" use="required"/>
+		<xs:attribute name="area" type="xs:float" use="required"/>
+		<xs:attribute name="area_error" type="xs:float" use="required"/>
+		<xs:attribute name="time" type="xs:float" use="required"/>
+		<xs:attribute name="time_width" type="xs:float" use="required"/>
+		<xs:attribute name="is_heavy" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:element name="xpressratio_result">
+		<xs:annotation>
+			<xs:documentation>Quantitation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="light_firstscan" type="xs:unsignedInt" use="required"/>
+			<xs:attribute name="light_lastscan" type="xs:unsignedInt" use="required"/>
+			<xs:attribute name="light_mass" type="xs:float" use="required"/>
+			<xs:attribute name="heavy_firstscan" type="xs:unsignedInt" use="required"/>
+			<xs:attribute name="heavy_lastscan" type="xs:unsignedInt" use="required"/>
+			<xs:attribute name="heavy_mass" type="xs:float" use="required"/>
+			<xs:attribute name="mass_tol" type="xs:float" use="required"/>
+			<xs:attribute name="ratio" type="xs:string" use="required"/>
+			<xs:attribute name="heavy2light_ratio" type="xs:string" use="required"/>
+			<xs:attribute name="light_area" type="xs:float" use="required"/>
+			<xs:attribute name="heavy_area" type="xs:float" use="required"/>
+			<xs:attribute name="decimal_ratio" type="xs:decimal" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!--the types used by above elements.-->
+	<xs:simpleType name="enzymeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="tryptic"/>
+			<xs:enumeration value="chymotryptic"/>
+			<xs:enumeration value="gluC"/>
+			<xs:enumeration value="gluC_bicarb"/>
+			<xs:enumeration value="elastase"/>
+			<xs:enumeration value="nonspecific"/>
+			<xs:enumeration value="tca"/>
+			<xs:enumeration value="CNBr"/>
+			<xs:enumeration value="AspN"/>
+			<xs:enumeration value="tryptic/CNBr"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="engineType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SEQUEST"/>
+			<xs:enumeration value="MASCOT"/>
+			<xs:enumeration value="COMET"/>
+			<xs:enumeration value="PROBID"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="model_dis_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="discrete"/>
+			<xs:enumeration value="gaussian"/>
+			<xs:enumeration value="extremevalue"/>
+			<xs:enumeration value="gamma"/>
+			<xs:enumeration value="evd"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="massType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="monoisotopic"/>
+			<xs:enumeration value="average"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="aa_symbolType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="#"/>
+			<xs:enumeration value="@"/>
+			<xs:enumeration value="*"/>
+			<xs:enumeration value="~"/>
+			<xs:enumeration value="'"/>
+			<xs:enumeration value="''"/>
+			<xs:enumeration value="$"/>
+			<xs:enumeration value="!"/>
+			<xs:enumeration value="^"/>
+			<xs:enumeration value="?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="term_symbolType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=","/>
+			<xs:enumeration value=";"/>
+			<xs:enumeration value=":"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ontologyEntryType">
+		<xs:attribute name="category" type="xs:string" use="required"/>
+		<xs:attribute name="value" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="positiveInt">
+		<xs:restriction base="xs:unsignedInt">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="nameValueType">
+		<xs:simpleContent>
+			<xs:extension base="xs:anySimpleType">
+				<xs:attribute name="name" type="xs:string" use="required"/>
+				<xs:attribute name="value" type="xs:anySimpleType" use="required"/>
+				<xs:attribute name="type" type="xs:anySimpleType"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

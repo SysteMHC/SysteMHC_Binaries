@@ -27,3 +27,21 @@ Ubuntu 14.04 is Trusty Tahr
 sudo deb https://cran.rstudio.com/bin/linux/ubuntu trusty/
 
 
+## Infromation for installing netHMC on ubuntu linux 14.04
+
+sudo apt-get install gawk
+sudo apt-get install tcsh
+
+edit the nethcm tcsh script and 
+On the first line of the script replace the string:
+/usr/local/python/bin/python
+set NMHOME variable to to the full path to the 'netMHC-3.0'
+
+then download 
+http://www.cbs.dtu.dk/services/NetMHC-3.4/net.tar.gz
+and extract to the 
+netMHC-3.4/etc 
+directory...
+
+
+ 

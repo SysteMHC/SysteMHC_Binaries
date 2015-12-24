@@ -1,3 +1,0 @@
-../netMHC -a HLA-A02:01 test.fsa > test.fsa.out
-../netMHC -p test.pep -a HLA-A02:01 > test.pep.out
-

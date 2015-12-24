@@ -1,1 +1,0 @@
-../gibbscluster -s 1 test.pep > test.pep.out

@@ -1,0 +1,26 @@
+#! /bin/tcsh
+
+foreach p ( `cat /usr/cbs/bio/src/netMHCpan-2.8/data/MHC_pseudo.dat | xC | gawk '{print $1"+"$2 }' | grep SLA- | sort -u ` )
+
+set a = `echo $p | gawk -F "+" '{print $1}'`
+set pseudo = `echo $p | gawk -F "+" '{print $2}'`
+
+if ( ! -e $a.thr ) then
+
+if ( -e /home/projects/mniel/multipred/withMHC/IEDB_retrain_March_2013/threshold/$a.thr ) then
+
+cp /home/projects/mniel/multipred/withMHC/IEDB_retrain_March_2013/threshold/$a.thr .
+
+else
+
+echo $p DOES not exist
+
+endif
+
+else
+
+echo "Error." $p "does not exist"
+
+endif
+
+end

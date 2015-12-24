@@ -1,0 +1,62 @@
+# /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/bin/netMHCpan -hlaseq B0702.fsa -p test.pep
+# Wed Mar  6 19:15:34 2013
+# User: mniel
+# PWD : /usr/cbs/bio/src/netMHCpan-2.8/test
+# Host: Linux interaction 2.6.16.54-0.2.12-default ia64
+# -hlaseq  B0702.fsa            File with full length HLA sequences
+# -p       1                    Use peptide input
+# Command line parameters set to:
+#	[-rdir filename]     /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64 Home directory for NetMHpan
+#	[-syn filename]      /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/data/syn/synaps Synaps file
+#	[-v]                 0                    Verbose mode
+#	[-dirty]             0                    Dirty mode, leave tmp dir+files
+#	[-sdev]              0                    Print sdev
+#	[-tdir filename]     /scratch             Temporary directory (Default $$)
+#	[-hlapseudo filename] /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/data/MHC_pseudo.dat File with HLA pseudo sequences
+#	[-hlaseq filename]   B0702.fsa            File with full length HLA sequences
+#	[-a line]            HLA-A02:01           HLA allele
+#	[-f filename]                             File name with input
+#	[-w]                 0                    w option for webface
+#	[-s]                 0                    Sort output on descending affinity
+#	[-p]                 1                    Use peptide input
+#	[-th float]          50.000000            Threshold for high binding peptides
+#	[-lt float]          500.000000           Threshold for low binding peptides
+#	[-rth float]         0.500000             Rank Threshold for high binding peptides
+#	[-rlt float]         2.000000             Rank Threshold for low binding peptides
+#	[-l string]          9                    Peptide length [8-11] (multiple length with ,)
+#	[-xls]               0                    Save output to xls file
+#	[-xlsfile filename]  NetMHCpan_out.xls    Filename for xls dump
+#	[-t float]           -99.900002           Threshold for output
+#	[-thrfmt filename]   /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/data/threshold/%s.thr Format for threshold filenames
+#	[-ic50]              0                    Print IC50 values for all alleles
+#	[-whitelist filename] /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/data/threshold/whitelist List of alleles to include IC50 values
+#	[-expfix]            0                    Exclude prefix from synlist
+#	[-version filename]  /usr/cbs/bio/src/netMHCpan-2.8//Linux_ia64/data/version File with version information
+#	[-inptype int]       0                    Input type [0] FASTA [1] Peptide
+#	[-listMHC]           0                    Print list of alleles included in netMHCpan
+
+# NetMHCpan version 2.8
+
+# Use user MHC pseudo sequence YYSEYRNIYAQTDESNLYLSYDYYTWAERAYEWY USER_DEF
+# Input is in PEPTIDE format
+
+USER_DEF : Estimated prediction accuracy  0.853 (using nearest neighbor HLA-B07:02)
+
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide        Identity 1-log50k(aff)  Exp_Binding  BindLevel
+-----------------------------------------------------------------------------------
+    0     USER_DEF    AAAWYLWEV         PEPLIST         0.127        0.743
+    0     USER_DEF    AAGLQDCTM         PEPLIST         0.100        0.000
+    0     USER_DEF    AARNIVRRA         PEPLIST         0.183        0.000
+    0     USER_DEF    AARPDDPTL         PEPLIST         0.293        0.149
+    0     USER_DEF    AASCGGAVF         PEPLIST         0.312        0.149
+    0     USER_DEF    AASKQQMLM         PEPLIST         0.183        0.000
+    0     USER_DEF    AASSTHRKV         PEPLIST         0.155        0.272
+    0     USER_DEF    AEALLADGL         PEPLIST         0.028        0.085
+    0     USER_DEF    AEESLSLEA         PEPLIST         0.017        0.000
+    0     USER_DEF    AEFGPWQTV         PEPLIST         0.043        0.316
+-----------------------------------------------------------------------------------
+
+Protein PEPLIST. Allele USER_DEF. Number of high binders 0. Number of weak binders 0. Number of peptides 10
+
+-----------------------------------------------------------------------------------

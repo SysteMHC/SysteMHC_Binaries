@@ -1,0 +1,125 @@
+
+
+   NetMHCpan 2.8              INSTALLATION INSTRUCTIONS
+
+
+   DESCRIPTION
+
+   The NetMHCpan 2.8 software predicts  binding of peptides  to any known MHC
+   molecule using artificial neural networks (ANNs). The method is trained on
+   around 150,000 quantitative binding data  covering more than 150 different
+   MHC molecules.  Predictions can be made for  HLA-A, B, C, E and G alleles,
+   as well as for non-human primates, mouse, cattle and pig.  Furthermore, it
+   is also possible to upload full length MHC protein sequences, and have the
+   server predict MHC restricted peptides from any given protein of interest.
+   Version 2.8 has been retrained on extented data set including 10 prevalent
+   HLA-C  and  7 prevalent BoLA MHC-I  molecules.  The method is described in
+   detail in the following articles:
+
+   Ver. 2.3:
+   
+   NetMHCpan - MHC class I binding prediction beyond humans.
+   Ilka Hoof, Bjoern Peters, John Sidney, Lasse Eggers Pedersen,
+   Ole Lund, Soren Buus, and Morten Nielsen.
+   Immunogenetics. 61(1):1-13, Jan 2009; Epub Nov 12, 2008.
+   
+   The original paper:
+
+   NetMHCpan, a Method for Quantitative Predictions of Peptide Binding
+   to Any HLA-A and -B Locus Protein of Known Sequence.
+   Nielsen M, et al.
+   PLoS ONE 2(8): e796. doi:10.1371/journal.pone.0000796, 2007.
+
+   More information about the method can be found at:
+   
+      http://www.cbs.dtu.dk/services/NetMHCpan/
+
+
+   DOWNLOAD
+
+   The netMHCpan 2.4 software package is a  property of Center for Biological
+   Sequence Analysis.  It may be downloaded  only  by special agreement.  For
+   academic users there is a download site at:
+
+        http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netMHCpan
+
+   Other users are requested to contact software@cbs.dtu.dk.
+
+
+   PRE-INSTALLATION
+
+   netMHCpan 2.8 currently runs under  Darwin (MacOSX), IRIX (SGI) and Linux.
+   The package consists of two files:
+  
+      netMHCpan-2.4.readme         this file
+      netMHCpan-2.8.<unix>.tar.Z   compressed TAR archive
+
+   where 'unix' is the UNIX platform on which you are about to install. After
+   installation the software will occupy less than 45 MB of diskspace.
+
+   INSTALLATION
+
+   1. Uncompress and untar the package:
+
+      cat netMHCpan-2.8.<unix>.tar.gz | uncompress | tar xvf -
+
+      This will produce a directory 'netMHCpan-2.8'.
+
+   2. From the CBS WWW site download the file:
+
+      http://www.cbs.dtu.dk/services/NetMHCpan-2.8/data.tar.gz
+
+      It should be 7590829 bytes. Put it in the 'netMHCpan-2.8' directory and
+      then gunzip and untar it:
+      
+      gunzip -c data.tar.gz | tar xvf -
+
+      This will produce a directory 'data' (~35MB).  It is necessary  for the
+      NetMHCpan 2.8 software to operate;  once it is installed you may delete
+      the 'data.tar.gz' file; it will not be needed.
+
+
+   2. In the 'netMHCpan-2.8' directory edit the script 'netMHCpan':
+   
+      a. At the top of the file  locate the part labelled  "GENERAL SETTINGS:
+         CUSTOMIZE TO YOUR SITE"  and set  the 'NMHOME' variable  to the full
+	 path to the 'netMHCpan-2.8' directory on your system;
+
+      b. Set TMPDIR to the full path to the tmp directory of you choice (must
+         be user writable);
+
+   3. In the 'netMHCpan-2.4/test' directory test the software:
+
+      > ../netMHCpan -p test.pep > test.pep.myout
+      > ../netMHCpan test.fsa > test.fsa.myout
+      > ../netMHCpan -hlaseq B0702.fsa test.fsa > test.fsa_userMHC.myout
+
+      The resulting ".myout" files  should not differ  from the corresponding
+      ".out" files provided in the package  other than in the directory names
+      rounding errors.
+
+   4. Finish the installation:
+
+      a. Copy or link the 'netMHCpan' file to a directory in the users' path.
+
+      b. Copy the 'netMHCpan.1' file to a location  in your manual system. If
+         you need a compiled version try running:
+
+         man -d netMHCpan.1 | compress >netMHCpan.Z
+
+         or:
+
+         neqn netMHCpan.1 | tbl | nroff -man | col | compress >netMHCpan.Z
+
+   5. Enjoy ...
+
+
+   PROBLEMS
+
+   Contact packages@cbs.dtu.dk in case of problems.
+   
+   Questions on the scientific aspects of the netMHCpan method should be sent
+   to dr Morten Nielsen, mniel@cbs.dtu.dk.
+
+   CBS,  6 Jan 2014
+   K. Rapacki

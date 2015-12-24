@@ -1,0 +1,13 @@
+#! /bin/tcsh
+
+#foreach a ( `ls -ltr | gawk '$7 == 8' | grep "\.thr" | args 9 | gawk -F "." '{ print $1}' ` )
+
+foreach a ( `ls -ltr *.thr | tail -20 | args 9 | gawk -F ".thr" '{ print $1}' ` )
+
+if ( -e $a.thr ) then
+
+echo $a `cat $a.thr | gawk '$2 == 1.0'`
+
+endif
+
+end

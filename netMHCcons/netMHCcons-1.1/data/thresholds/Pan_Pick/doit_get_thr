@@ -1,0 +1,21 @@
+#! /bin/tcsh
+
+foreach p ( `cat list` )
+
+if ( ! -e ../Pan_Pick.err/$p.thr ) thrn
+
+foreach a ( `cat ../../MHC_pseudo.dat | gawk -v p=$p '$2 == p' | args 1 ` )
+
+cp ../Pan_Pick.err/$p.thr $a.thr
+
+end
+
+else 
+
+echo Error. File ../Pan_Pick.err/$p.thr does not exist
+
+exit
+
+endif
+
+end

@@ -1,0 +1,38 @@
+#! /bin/tcsh
+
+set DIR = /home/projects/mniel/netMHC-3.4_random/
+
+foreach a ( `cat list | args 1` )
+
+if ( ! -e $a.thr ) then
+
+touch $a.thr
+
+if ( -e $DIR/$a.pred ) then
+
+cat $DIR/$a.pred | xC | gawk '{printf( "%s %f\n", $1,$2)}' | sort -nrk2 > $$.sort
+
+echo $a `wc $$.sort | args 1` >> tmp.out
+
+foreach f ( 0.01 0.025 0.05 0.075 0.1 0.125 0.15 0.175 0.2 0.25 0.3 0.4 0.5 0.8 1.0 1.5 2 3 4 5 6 7 8 9 10 15 16 32 50 )
+
+set N = `echo $f | gawk '{print ($1*200000)/100}' `
+
+set line = `cat $$.sort | head -$N | tail -1`
+
+echo $a $f $line >> $a.thr
+
+end
+
+rm -f $$.sort
+
+else
+
+echo "Error." $DIR/$a.pred "does not exist" >> tmp.out
+
+endif
+
+endif
+
+end
+

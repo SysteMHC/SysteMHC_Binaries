@@ -1,0 +1,38 @@
+#! /bin/tcsh
+
+foreach p ( `cat /usr/cbs/bio/src/netMHCpan-2.4/data/MHC_pseudo.dat | xC | gawk '{print $1"+"$2 }' | sort -u ` )
+
+set a = `echo $p | gawk -F "+" '{print $1}'`
+set pseudo = `echo $p | gawk -F "+" '{print $2}'`
+
+if ( ! -e $a.thr ) then
+
+touch $a.thr
+
+if ( -e ../random/$pseudo.pred ) then
+
+cat ../random/$pseudo.pred | xC | args 3,5 | gawk '{printf( "%s %f\n", $1,$2)}' | sort -nrk2 > $$.sort
+
+echo $a `wc $$.sort | args 1`
+
+foreach f ( 0.01 0.025 0.05 0.075 0.1 0.125 0.15 0.175 0.2 0.25 0.3 0.4 0.5 0.8 1.0 1.5 2 3 4 5 6 7 8 9 10 15 16 32 50 )
+
+set N = `echo $f | gawk '{print ($1*200000)/100}' `
+
+set line = `cat $$.sort | head -$N | tail -1`
+
+echo $a $f $line >> $a.thr
+
+end
+
+rm -f $$.sort
+
+else
+
+echo "Error." $p "does not exist"
+
+endif
+
+endif
+
+end

@@ -1,0 +1,6 @@
+cat /home/projects/mniel/multipred/withMHC/IEDB_retrain_March_2013/data/c00? | gawk '$3 !=0.01' | sort -u | gawk '{if ( n[$4] == 0 ) { nb[$4] = 0 } if ( $3>0.426 ) { nb[$4]++} n[$4]++; ps[$4]=$2}END{for ( a in n ) { print a, n[a], nb[a], ps[a]}}' | sort -k1 | txt2tab > counts.xls
+
+cat counts.xls | gawk '$2>50 && $3>10' | args 1,4 >  training.pseudo
+
+
+

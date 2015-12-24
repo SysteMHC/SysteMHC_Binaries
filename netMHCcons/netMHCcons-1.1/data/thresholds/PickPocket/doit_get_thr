@@ -1,0 +1,43 @@
+#! /bin/tcsh
+
+set data_dir = /home/projects/mniel/pickpocket-1.1_random
+
+set DIR = /usr/cbs/bio/src/netMHCcons-1.1/data/thresholds/
+
+foreach aa ( `cat /usr/cbs/bio/src/netMHCpan-2.8/data/MHC_pseudo.dat | xC | gawk '{print $1"+"$2}' | sort -u ` )
+
+set pseudo = `echo $aa | gawk -F "+" '{print $2}' `
+set a = `echo $aa | gawk -F "+" '{print $1}' `
+
+if ( ! -e $DIR/PickPocket/$a.thr ) then
+
+touch $DIR/PickPocket/$a.thr
+
+if ( -e $data_dir/$pseudo.pred ) then
+
+cat $data_dir/$pseudo.pred | xC | gawk '{printf( "%s %f\n", $1,$2)}' | sort -nrk2 > $DIR/PickPocket/$$.sort
+
+echo $a `wc $DIR/PickPocket/$$.sort | args 1` >> $DIR/PickPocket/tmp.out_MN
+
+foreach f ( 0.01 0.025 0.05 0.075 0.1 0.125 0.15 0.175 0.2 0.25 0.3 0.4 0.5 0.8 1.0 1.5 2 3 4 5 6 7 8 9 10 15 16 32 50 )
+
+set N = `echo $f | gawk '{print ($1*200000)/100}' `
+
+set line = `cat $DIR/PickPocket/$$.sort | head -$N | tail -1`
+
+echo $a $f $line >> $DIR/PickPocket/$a.thr
+
+end
+
+rm -f $DIR/PickPocket/$$.sort
+
+else 
+
+echo Error. File $pseudo.pred does not exist >> $DIR/PickPocket/tmp.out_MN
+
+exit
+
+endif
+endif
+
+end

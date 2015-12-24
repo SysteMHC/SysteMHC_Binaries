@@ -1,0 +1,24 @@
+#! /bin/tcsh
+
+touch synaps
+rm -f synaps
+
+set DIR = /home/projects/mniel/netMHCpan-2.8_bu/
+
+foreach s ( `cat $DIR/data/syn/sp/synlist ` )
+
+synaps_rescale_pan $DIR/$s -x -min -1 -max 1 | xC >> synaps
+
+end
+
+foreach s ( `cat $DIR/data/syn/bl/synlist ` )
+
+synaps_rescale_pan $DIR/$s -x -bl | xC >> synaps
+
+end
+
+foreach s ( `cat $DIR/data/syn/spbl/synlist ` )
+
+synaps_rescale_pan $DIR/$s -x -min -1 -max 1 -bl -mix | xC >> synaps
+
+end

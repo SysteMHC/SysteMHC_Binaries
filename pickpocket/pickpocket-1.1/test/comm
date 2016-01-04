@@ -1,0 +1,4 @@
+../PickPocket -p test.pep > test.pep.out
+../PickPocket test.fsa > test.fsa.out
+../PickPocket -hlaseq B0702.fsa -p test.pep > test.pep_userMHC.out
+

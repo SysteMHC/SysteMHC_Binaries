@@ -1,0 +1,100 @@
+
+
+   PickPocket 1.1	    INSTALLATION INSTRUCTIONS
+
+
+   DESCRIPTION
+
+   The PickPocket-1.1 software predicts  binding of peptides to any known MHC
+   molecule using PSSM.  The method is trained on around 150,000 quantitative
+   binding data  covering more than 150 different MHC molecules.  Predictions
+   can be made for human HLA-A, B, C, E and G alleles,  as well as  for other
+   primates, mouse, cattle and pig. It is also possible to upload full length
+   MHC protein sequences, and have the server predict MHC restricted peptides
+   from any given protein of interest.  PickPocket 1.1 has been retrained  on
+   extented data set  including 10 prevalent HLA-C and 7 prevalent BoLA MHC-I
+   molecules. The method is described in detail in the following article:
+
+   The original paper:
+
+   The PickPocket method for predicting binding specificities for receptors 
+   based on receptor pocket similarities: application to MHC-peptide binding
+   Zhang H, Lund O, Nielsen M.
+   Bioinformatics; 25(10):1293-9, May 15, 2009.
+
+
+   DOWNLOAD
+
+   The pickpocket 1.1 software package is a property of Center for Biological
+   Sequence Analysis.  It may be downloaded  only  by special agreement.  For
+   academic users there is a download site at:
+
+        http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?pickpocket
+
+   Other users are requested to contact software@cbs.dtu.dk.
+
+
+   PRE-INSTALLATION
+
+   PickPocket 1.1 currently runs under Linux and Darwin (MacOSX). The package
+   consists of two files:
+  
+      pickpocket-1.1.readme	this file
+      pickpocket-1.1.tar.gz	gzip'ed TAR archive
+
+   After installation the software will occupy less than 15 MB of diskspace.
+
+
+   INSTALLATION
+
+   1. Uncompress and untar the package:
+
+      gunzip -c pickpocket-1.1.tar.gz | tar xvf -
+
+      This should produce a directory 'pickpocket-1.1'.
+
+   2. In the 'pickpocket-1.1' directory edit the script 'PickPocket':
+   
+      a. At the top of the file  locate the part labelled  "GENERAL SETTINGS:
+         CUSTOMIZE TO YOUR SITE"  and set  the 'NMHOME' variable  to the full
+	 path to the 'pickpocket-1.1' directory on your system;
+
+      b. Set TMPDIR to the full path to the tmp directory of you choice (must
+         be user writable, typically '/var/tmp');
+
+   3. In the 'pickpocket-1.1/test' directory test the software:
+
+      > ../PickPocket -p test.pep > test.pep.myout
+      > ../PickPocket test.fsa > test.fsa.myout
+      > ../PickPocket -hlaseq B0702.fsa -p test.pep > test.pep_userMHC.myout
+
+      The resulting ".myout" files  should not differ  from the corresponding
+      ".out" files provided in the package  other than in the directory names
+      and rounding errors.
+
+   4. Finish the installation:
+
+      a. Copy or link the 'PickPocket' script  to any directory in the users'
+         path on your syste.
+
+      b. Copy the 'pickpocket.1' file to a location in your manual system. If
+         you need a compiled version try running:
+
+         man -d pickpocket.1 | compress >pickpocket.Z
+
+         or:
+
+         neqn pickpocket.1 | tbl | nroff -man | col | compress >pickpocket.Z
+
+   5. Enjoy ...
+
+
+   PROBLEMS
+
+   Contact packages@cbs.dtu.dk in case of problems.
+   
+   Questions on the scientific aspects of the netMHCpan method should be sent
+   to dr Morten Nielsen, mniel@cbs.dtu.dk.
+
+   CBS, 28 Apr 2015
+   K. Rapacki

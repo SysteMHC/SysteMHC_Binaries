@@ -1,0 +1,105 @@
+.de Id
+.ds Rv \\$3
+.ds Dt \\$4
+..
+.Id $Header: example.1,v 1.2 94/02/15 13:28:25 rapacki Exp $
+.TH PickPocet 1 \" -*- nroff -*-
+.SH NAME
+PickPocket 1.1 \- Prediction of binding of peptides to any known MHC molecule.
+.SH SYNOPSIS
+.B PickPocket
+[\fB\-a\fP \fIval\fP]
+[\fB\-c\fP \fIfile\fP]
+[\fB\-d\fP \fIfile\fP]
+[\fB\-dirty\fP]
+[\fB\-f\fP \fIfile\fP]
+[\fB\-h\fP]
+[\fB\-hlapseudo\fP \fIfile\fP]
+[\fB\-hlaseq\fP \fIval\fP]
+[\fB\--inptype\fP]
+[\fB\-l\fP \fIval\fP]
+[\fB\-listMHC\fP]
+[\fB\-p\fP]
+[\fB\-pow\fP \fIval\fP]
+[\fB\-rdir\fP \fIdir\fP]
+[\fB\-s\fP]
+[\fB\-tdir\fP \fIdir\fP]
+[\fB\-v\fP]
+
+.SH DESCRIPTION
+.B PickPocket 1.1
+server predicts binding of peptides to any known MHC molecule using position
+specific weight matrices (PSWM). PSWM's are constructed from a library of
+PSWM describing binding motifs of well-characterized MHC molecules. This
+library is constructed from close to 140,000 quantitative binding data covering more than 115 different MHC molecules.
+Predictions can be made for HLA-A, B, C, E and G molecules, as well as for non-human primates, 
+mouse, pig and cattle MHC molecules. 
+Further, the user can upload full length MHC protein sequences, and have the server predict MHC restricted 
+peptides from any given protein of interest.  Predictions can be made for 8-11 mer peptides. 
+
+The input is taken from \fIfile\fP(s). Use \fB--\fP for
+\fIstdin\fP. The output is plain text; it will go to \fIstdout\fP.
+The required input format is \fBFASTA\fP or \fBPEPTIDE\fP.
+
+.SH OPTIONS
+.TP
+.BI "-rdir dir"
+pickpocet directory
+.TP
+.B "\-v"
+Verbose mode
+.TP
+.B "\-dirty"
+Dirty mode. Keeps all temporary files.
+.TP
+.BI "\-tdir dir"
+Temporary directory
+.TP
+.BI "\-hlapseudo file"
+File with MHC pseudo sequences.
+.TP
+.BI "\-hlaseq file"
+File with full length MHC protien sequence.
+.TP
+.B "\-a value"
+MHC allele name (use comman separate names without spaces for multiple allele).
+.TP
+.BI "\-f file"
+Take the input from \fIfile\fP. The default is \fIfile\fP (without any
+option flag).
+.TP
+.B "-h"
+Help
+.TP
+.B "\-s"
+Sort output in descending affinity. Default is no sorting.
+.TP
+.BI "\-p"
+Use \fBPEPTIDE\fP input. Peptides must be of equal length and the length must correspond to the value
+set by the -l option.
+.TP
+.BI "\-l value"
+Peptide length (8-11). Default is 9.
+.TP
+.BI "\-inptype"
+Input type [0] FASTA [1] Peptide (redundant with the -p option)
+.TP
+.BI "\-listMHC"
+Print list of alleles includecin netMHCpan.
+.TP
+.BI "\-c file"
+File with contact information
+.TP
+.BI "\-d file"
+File with pocket library information
+
+.SH AUTHOR
+
+Morten Nielsen, mniel@cbs.dtu.dk, September 2014.
+.br
+.SH FILES
+\fB/usr/cbs/bio/bin/pickpocket\fP           executable
+.br
+\fB/usr/cbs/bio/src/pickpocket-1.1\fP       software home
+.SH SEE ALSO
+fasta (1),

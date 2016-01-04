@@ -1,0 +1,44 @@
+# /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/bin/pickpocket_pmbec -hlaseq B0702.fsa -p test.pep -d /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/data/PMBEC.lib
+# Sat Aug  9 19:36:46 2014
+# User: mniel
+# PWD : /usr/cbs/bio/src/pickpocket-1.1/test
+# Host: Linux interaction 2.6.16.54-0.2.12-default ia64
+# -hlaseq  B0702.fsa            File with full length HLA sequences
+# -p       1                    Use peptide input
+# -d       /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/data/PMBEC.lib Matrix definitions
+# Command line parameters set to:
+#	[-rdir filename]     /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64 Home directory for NetMHpan
+#	[-v]                 0                    Verbose mode
+#	[-dirty]             0                    Dirty mode, leave tmp dir+files
+#	[-tdir filename]     /scratch             Temporary directory (Default $$)
+#	[-hlapseudo filename] /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/data/MHC_pseudo.dat File with HLA pseudo sequences
+#	[-hlaseq filename]   B0702.fsa            File with full length HLA sequences
+#	[-a line]            HLA-A02:01           HLA allele
+#	[-f filename]                             File name with input
+#	[-w]                 0                    w option for webface
+#	[-s]                 0                    Sort output on descending affinity
+#	[-p]                 1                    Use peptide input
+#	[-l int]             9                    Peptide length [8-11]
+#	[-inptype int]       0                    Input type [0] FASTA [1] Peptide
+#	[-listMHC]           0                    Print list of alleles included in PickPocket
+#	[-c filename]        /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/data/contact.txt Contacts
+#	[-d filename]        /usr/cbs/bio/src/pickpocket-1.1/Linux_ia64/data/PMBEC.lib Matrix definitions
+#	[-pow float]         10.000000            Power for scoring function
+# Use user MHC pseudo sequence YYSEYRNIYAQTDESNLYLSYDYYTWAERAYEWY USER_DEF
+# Input is in PEPTIDE format
+
+# Peptide length 9
+-----------------------------------------------------------------------------------
+  pos          HLA    peptide        Identity 1-log50k(aff)  Exp_Binding
+-----------------------------------------------------------------------------------
+    0     USER_DEF  AAAWYLWEV         PEPLIST         0.220        0.743
+    0     USER_DEF  AAGLQDCTM         PEPLIST         0.263        0.000
+    0     USER_DEF  AARNIVRRA         PEPLIST         0.338        0.000
+    0     USER_DEF  AARPDDPTL         PEPLIST         0.373        0.149
+    0     USER_DEF  AASCGGAVF         PEPLIST         0.340        0.149
+    0     USER_DEF  AASKQQMLM         PEPLIST         0.322        0.000
+    0     USER_DEF  AASSTHRKV         PEPLIST         0.253        0.272
+    0     USER_DEF  AEALLADGL         PEPLIST         0.172        0.085
+    0     USER_DEF  AEESLSLEA         PEPLIST         0.086        0.000
+    0     USER_DEF  AEFGPWQTV         PEPLIST         0.114        0.316
+-----------------------------------------------------------------------------------

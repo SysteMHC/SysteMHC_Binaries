@@ -1,0 +1,290 @@
+# /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/bin/netMHCpan -hlaseq ./netMHCpan/netMHCpan-2.8/test/B0702.fsa ./netMHCpan/netMHCpan-2.8/test/test.fsa
+# Mon Jan  4 10:46:10 2016
+# User: witold
+# PWD : /home/witold/prog/SysteMHC_Binaries
+# Host: Linux witold-VirtualBox 3.19.0-39-generic x86_64
+# -hlaseq  ./netMHCpan/netMHCpan-2.8/test/B0702.fsa File with full length HLA sequences
+# Command line parameters set to:
+#	[-rdir filename]     /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64 Home directory for NetMHpan
+#	[-syn filename]      /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/data/syn/synaps Synaps file
+#	[-v]                 0                    Verbose mode
+#	[-dirty]             0                    Dirty mode, leave tmp dir+files
+#	[-sdev]              0                    Print sdev
+#	[-tdir filename]     /home/witold/prog/temp Temporary directory (Default $$)
+#	[-hlapseudo filename] /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/data/MHC_pseudo.dat File with HLA pseudo sequences
+#	[-hlaseq filename]   ./netMHCpan/netMHCpan-2.8/test/B0702.fsa File with full length HLA sequences
+#	[-a line]            HLA-A02:01           HLA allele
+#	[-f filename]                             File name with input
+#	[-w]                 0                    w option for webface
+#	[-s]                 0                    Sort output on descending affinity
+#	[-p]                 0                    Use peptide input
+#	[-th float]          50.000000            Threshold for high binding peptides
+#	[-lt float]          500.000000           Threshold for low binding peptides
+#	[-rth float]         0.500000             Rank Threshold for high binding peptides
+#	[-rlt float]         2.000000             Rank Threshold for low binding peptides
+#	[-l string]          9                    Peptide length [8-11] (multiple length with ,)
+#	[-xls]               0                    Save output to xls file
+#	[-xlsfile filename]  NetMHCpan_out.xls    Filename for xls dump
+#	[-t float]           -99.900002           Threshold for output
+#	[-thrfmt filename]   /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/data/threshold/%s.thr Format for threshold filenames
+#	[-ic50]              0                    Print IC50 values for all alleles
+#	[-whitelist filename] /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/data/threshold/whitelist List of alleles to include IC50 values
+#	[-expfix]            0                    Exclude prefix from synlist
+#	[-version filename]  /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/Linux_x86_64/data/version File with version information
+#	[-inptype int]       0                    Input type [0] FASTA [1] Peptide
+#	[-listMHC]           0                    Print list of alleles included in netMHCpan
+
+# NetMHCpan version 2.8
+
+# Use user MHC pseudo sequence YYSEYRNIYAQTDESNLYLSYDYYTWAERAYEWY USER_DEF
+# Input is in FSA format
+
+# Peptide length 9
+
+USER_DEF : Estimated prediction accuracy  0.853 (using nearest neighbor HLA-B07:02)
+
+-----------------------------------------------------------------------------------
+  pos          HLA      peptide        Identity 1-log50k(aff)  BindLevel
+-----------------------------------------------------------------------------------
+    0     USER_DEF    TMDKSELVQ 143B_BOVIN_P293         0.026
+    1     USER_DEF    MDKSELVQK 143B_BOVIN_P293         0.008
+    2     USER_DEF    DKSELVQKA 143B_BOVIN_P293         0.009
+    3     USER_DEF    KSELVQKAK 143B_BOVIN_P293         0.024
+    4     USER_DEF    SELVQKAKL 143B_BOVIN_P293         0.025
+    5     USER_DEF    ELVQKAKLA 143B_BOVIN_P293         0.028
+    6     USER_DEF    LVQKAKLAE 143B_BOVIN_P293         0.078
+    7     USER_DEF    VQKAKLAEQ 143B_BOVIN_P293         0.014
+    8     USER_DEF    QKAKLAEQA 143B_BOVIN_P293         0.015
+    9     USER_DEF    KAKLAEQAE 143B_BOVIN_P293         0.044
+   10     USER_DEF    AKLAEQAER 143B_BOVIN_P293         0.008
+   11     USER_DEF    KLAEQAERY 143B_BOVIN_P293         0.048
+   12     USER_DEF    LAEQAERYD 143B_BOVIN_P293         0.011
+   13     USER_DEF    AEQAERYDD 143B_BOVIN_P293         0.003
+   14     USER_DEF    EQAERYDDM 143B_BOVIN_P293         0.040
+   15     USER_DEF    QAERYDDMA 143B_BOVIN_P293         0.019
+   16     USER_DEF    AERYDDMAA 143B_BOVIN_P293         0.051
+   17     USER_DEF    ERYDDMAAA 143B_BOVIN_P293         0.043
+   18     USER_DEF    RYDDMAAAM 143B_BOVIN_P293         0.189
+   19     USER_DEF    YDDMAAAMK 143B_BOVIN_P293         0.017
+   20     USER_DEF    DDMAAAMKA 143B_BOVIN_P293         0.016
+   21     USER_DEF    DMAAAMKAV 143B_BOVIN_P293         0.112
+   22     USER_DEF    MAAAMKAVT 143B_BOVIN_P293         0.167
+   23     USER_DEF    AAAMKAVTE 143B_BOVIN_P293         0.051
+   24     USER_DEF    AAMKAVTEQ 143B_BOVIN_P293         0.099
+   25     USER_DEF    AMKAVTEQG 143B_BOVIN_P293         0.024
+   26     USER_DEF    MKAVTEQGH 143B_BOVIN_P293         0.019
+   27     USER_DEF    KAVTEQGHE 143B_BOVIN_P293         0.014
+   28     USER_DEF    AVTEQGHEL 143B_BOVIN_P293         0.234
+   29     USER_DEF    VTEQGHELS 143B_BOVIN_P293         0.012
+   30     USER_DEF    TEQGHELSN 143B_BOVIN_P293         0.009
+   31     USER_DEF    EQGHELSNE 143B_BOVIN_P293         0.005
+   32     USER_DEF    QGHELSNEE 143B_BOVIN_P293         0.008
+   33     USER_DEF    GHELSNEER 143B_BOVIN_P293         0.007
+   34     USER_DEF    HELSNEERN 143B_BOVIN_P293         0.005
+   35     USER_DEF    ELSNEERNL 143B_BOVIN_P293         0.036
+   36     USER_DEF    LSNEERNLL 143B_BOVIN_P293         0.072
+   37     USER_DEF    SNEERNLLS 143B_BOVIN_P293         0.011
+   38     USER_DEF    NEERNLLSV 143B_BOVIN_P293         0.050
+   39     USER_DEF    EERNLLSVA 143B_BOVIN_P293         0.036
+   40     USER_DEF    ERNLLSVAY 143B_BOVIN_P293         0.059
+   41     USER_DEF    RNLLSVAYK 143B_BOVIN_P293         0.021
+   42     USER_DEF    NLLSVAYKN 143B_BOVIN_P293         0.011
+   43     USER_DEF    LLSVAYKNV 143B_BOVIN_P293         0.047
+   44     USER_DEF    LSVAYKNVV 143B_BOVIN_P293         0.065
+   45     USER_DEF    SVAYKNVVG 143B_BOVIN_P293         0.077
+   46     USER_DEF    VAYKNVVGA 143B_BOVIN_P293         0.070
+   47     USER_DEF    AYKNVVGAR 143B_BOVIN_P293         0.015
+   48     USER_DEF    YKNVVGARR 143B_BOVIN_P293         0.019
+   49     USER_DEF    KNVVGARRS 143B_BOVIN_P293         0.011
+   50     USER_DEF    NVVGARRSS 143B_BOVIN_P293         0.096
+   51     USER_DEF    VVGARRSSW 143B_BOVIN_P293         0.171
+   52     USER_DEF    VGARRSSWR 143B_BOVIN_P293         0.018
+   53     USER_DEF    GARRSSWRV 143B_BOVIN_P293         0.135
+   54     USER_DEF    ARRSSWRVI 143B_BOVIN_P293         0.180
+   55     USER_DEF    RRSSWRVIS 143B_BOVIN_P293         0.043
+   56     USER_DEF    RSSWRVISS 143B_BOVIN_P293         0.106
+   57     USER_DEF    SSWRVISSI 143B_BOVIN_P293         0.120
+   58     USER_DEF    SWRVISSIE 143B_BOVIN_P293         0.027
+   59     USER_DEF    WRVISSIEQ 143B_BOVIN_P293         0.022
+   60     USER_DEF    RVISSIEQK 143B_BOVIN_P293         0.042
+   61     USER_DEF    VISSIEQKT 143B_BOVIN_P293         0.018
+   62     USER_DEF    ISSIEQKTE 143B_BOVIN_P293         0.009
+   63     USER_DEF    SSIEQKTER 143B_BOVIN_P293         0.014
+   64     USER_DEF    SIEQKTERN 143B_BOVIN_P293         0.012
+   65     USER_DEF    IEQKTERNE 143B_BOVIN_P293         0.005
+   66     USER_DEF    EQKTERNEK 143B_BOVIN_P293         0.015
+   67     USER_DEF    QKTERNEKK 143B_BOVIN_P293         0.006
+   68     USER_DEF    KTERNEKKQ 143B_BOVIN_P293         0.009
+   69     USER_DEF    TERNEKKQQ 143B_BOVIN_P293         0.004
+   70     USER_DEF    ERNEKKQQM 143B_BOVIN_P293         0.038
+   71     USER_DEF    RNEKKQQMG 143B_BOVIN_P293         0.014
+   72     USER_DEF    NEKKQQMGK 143B_BOVIN_P293         0.008
+   73     USER_DEF    EKKQQMGKE 143B_BOVIN_P293         0.004
+   74     USER_DEF    KKQQMGKEY 143B_BOVIN_P293         0.042
+   75     USER_DEF    KQQMGKEYR 143B_BOVIN_P293         0.017
+   76     USER_DEF    QQMGKEYRE 143B_BOVIN_P293         0.009
+   77     USER_DEF    QMGKEYREK 143B_BOVIN_P293         0.013
+   78     USER_DEF    MGKEYREKI 143B_BOVIN_P293         0.036
+   79     USER_DEF    GKEYREKIE 143B_BOVIN_P293         0.004
+   80     USER_DEF    KEYREKIEA 143B_BOVIN_P293         0.019
+   81     USER_DEF    EYREKIEAE 143B_BOVIN_P293         0.014
+   82     USER_DEF    YREKIEAEL 143B_BOVIN_P293         0.095
+   83     USER_DEF    REKIEAELQ 143B_BOVIN_P293         0.005
+   84     USER_DEF    EKIEAELQD 143B_BOVIN_P293         0.004
+   85     USER_DEF    KIEAELQDI 143B_BOVIN_P293         0.033
+   86     USER_DEF    IEAELQDIC 143B_BOVIN_P293         0.008
+   87     USER_DEF    EAELQDICN 143B_BOVIN_P293         0.008
+   88     USER_DEF    AELQDICND 143B_BOVIN_P293         0.003
+   89     USER_DEF    ELQDICNDV 143B_BOVIN_P293         0.029
+   90     USER_DEF    LQDICNDVL 143B_BOVIN_P293         0.041
+   91     USER_DEF    QDICNDVLQ 143B_BOVIN_P293         0.006
+   92     USER_DEF    DICNDVLQL 143B_BOVIN_P293         0.026
+   93     USER_DEF    ICNDVLQLL 143B_BOVIN_P293         0.034
+   94     USER_DEF    CNDVLQLLD 143B_BOVIN_P293         0.006
+   95     USER_DEF    NDVLQLLDK 143B_BOVIN_P293         0.006
+   96     USER_DEF    DVLQLLDKY 143B_BOVIN_P293         0.019
+   97     USER_DEF    VLQLLDKYL 143B_BOVIN_P293         0.058
+   98     USER_DEF    LQLLDKYLI 143B_BOVIN_P293         0.023
+   99     USER_DEF    QLLDKYLIP 143B_BOVIN_P293         0.012
+  100     USER_DEF    LLDKYLIPN 143B_BOVIN_P293         0.022
+  101     USER_DEF    LDKYLIPNA 143B_BOVIN_P293         0.009
+  102     USER_DEF    DKYLIPNAT 143B_BOVIN_P293         0.022
+  103     USER_DEF    KYLIPNATQ 143B_BOVIN_P293         0.022
+  104     USER_DEF    YLIPNATQP 143B_BOVIN_P293         0.049
+  105     USER_DEF    LIPNATQPE 143B_BOVIN_P293         0.033
+  106     USER_DEF    IPNATQPES 143B_BOVIN_P293         0.224
+  107     USER_DEF    PNATQPESK 143B_BOVIN_P293         0.005
+  108     USER_DEF    NATQPESKV 143B_BOVIN_P293         0.066
+  109     USER_DEF    ATQPESKVF 143B_BOVIN_P293         0.085
+  110     USER_DEF    TQPESKVFY 143B_BOVIN_P293         0.023
+  111     USER_DEF    QPESKVFYL 143B_BOVIN_P293         0.346
+  112     USER_DEF    PESKVFYLK 143B_BOVIN_P293         0.007
+  113     USER_DEF    ESKVFYLKM 143B_BOVIN_P293         0.029
+  114     USER_DEF    SKVFYLKMK 143B_BOVIN_P293         0.011
+  115     USER_DEF    KVFYLKMKG 143B_BOVIN_P293         0.026
+  116     USER_DEF    VFYLKMKGD 143B_BOVIN_P293         0.006
+  117     USER_DEF    FYLKMKGDY 143B_BOVIN_P293         0.060
+  118     USER_DEF    YLKMKGDYF 143B_BOVIN_P293         0.147
+  119     USER_DEF    LKMKGDYFR 143B_BOVIN_P293         0.012
+  120     USER_DEF    KMKGDYFRY 143B_BOVIN_P293         0.040
+  121     USER_DEF    MKGDYFRYL 143B_BOVIN_P293         0.080
+  122     USER_DEF    KGDYFRYLS 143B_BOVIN_P293         0.016
+  123     USER_DEF    GDYFRYLSE 143B_BOVIN_P293         0.012
+  124     USER_DEF    DYFRYLSEV 143B_BOVIN_P293         0.041
+  125     USER_DEF    YFRYLSEVA 143B_BOVIN_P293         0.105
+  126     USER_DEF    FRYLSEVAS 143B_BOVIN_P293         0.034
+  127     USER_DEF    RYLSEVASG 143B_BOVIN_P293         0.022
+  128     USER_DEF    YLSEVASGD 143B_BOVIN_P293         0.032
+  129     USER_DEF    LSEVASGDN 143B_BOVIN_P293         0.013
+  130     USER_DEF    SEVASGDNK 143B_BOVIN_P293         0.012
+  131     USER_DEF    EVASGDNKQ 143B_BOVIN_P293         0.019
+  132     USER_DEF    VASGDNKQT 143B_BOVIN_P293         0.025
+  133     USER_DEF    ASGDNKQTT 143B_BOVIN_P293         0.020
+  134     USER_DEF    SGDNKQTTV 143B_BOVIN_P293         0.040
+  135     USER_DEF    GDNKQTTVS 143B_BOVIN_P293         0.011
+  136     USER_DEF    DNKQTTVSN 143B_BOVIN_P293         0.007
+  137     USER_DEF    NKQTTVSNS 143B_BOVIN_P293         0.010
+  138     USER_DEF    KQTTVSNSQ 143B_BOVIN_P293         0.022
+  139     USER_DEF    QTTVSNSQQ 143B_BOVIN_P293         0.016
+  140     USER_DEF    TTVSNSQQA 143B_BOVIN_P293         0.035
+  141     USER_DEF    TVSNSQQAY 143B_BOVIN_P293         0.086
+  142     USER_DEF    VSNSQQAYQ 143B_BOVIN_P293         0.017
+  143     USER_DEF    SNSQQAYQE 143B_BOVIN_P293         0.008
+  144     USER_DEF    NSQQAYQEA 143B_BOVIN_P293         0.039
+  145     USER_DEF    SQQAYQEAF 143B_BOVIN_P293         0.106
+  146     USER_DEF    QQAYQEAFE 143B_BOVIN_P293         0.010
+  147     USER_DEF    QAYQEAFEI 143B_BOVIN_P293         0.066
+  148     USER_DEF    AYQEAFEIS 143B_BOVIN_P293         0.014
+  149     USER_DEF    YQEAFEISK 143B_BOVIN_P293         0.023
+  150     USER_DEF    QEAFEISKK 143B_BOVIN_P293         0.009
+  151     USER_DEF    EAFEISKKE 143B_BOVIN_P293         0.014
+  152     USER_DEF    AFEISKKEM 143B_BOVIN_P293         0.080
+  153     USER_DEF    FEISKKEMQ 143B_BOVIN_P293         0.009
+  154     USER_DEF    EISKKEMQP 143B_BOVIN_P293         0.014
+  155     USER_DEF    ISKKEMQPT 143B_BOVIN_P293         0.037
+  156     USER_DEF    SKKEMQPTH 143B_BOVIN_P293         0.018
+  157     USER_DEF    KKEMQPTHP 143B_BOVIN_P293         0.006
+  158     USER_DEF    KEMQPTHPI 143B_BOVIN_P293         0.167
+  159     USER_DEF    EMQPTHPIR 143B_BOVIN_P293         0.025
+  160     USER_DEF    MQPTHPIRL 143B_BOVIN_P293         0.086
+  161     USER_DEF    QPTHPIRLG 143B_BOVIN_P293         0.063
+  162     USER_DEF    PTHPIRLGL 143B_BOVIN_P293         0.074
+  163     USER_DEF    THPIRLGLA 143B_BOVIN_P293         0.020
+  164     USER_DEF    HPIRLGLAL 143B_BOVIN_P293         0.876
+  165     USER_DEF    PIRLGLALN 143B_BOVIN_P293         0.006
+  166     USER_DEF    IRLGLALNF 143B_BOVIN_P293         0.053
+  167     USER_DEF    RLGLALNFS 143B_BOVIN_P293         0.022
+  168     USER_DEF    LGLALNFSV 143B_BOVIN_P293         0.037
+  169     USER_DEF    GLALNFSVF 143B_BOVIN_P293         0.150
+  170     USER_DEF    LALNFSVFY 143B_BOVIN_P293         0.043
+  171     USER_DEF    ALNFSVFYY 143B_BOVIN_P293         0.054
+  172     USER_DEF    LNFSVFYYE 143B_BOVIN_P293         0.010
+  173     USER_DEF    NFSVFYYEI 143B_BOVIN_P293         0.033
+  174     USER_DEF    FSVFYYEIL 143B_BOVIN_P293         0.053
+  175     USER_DEF    SVFYYEILN 143B_BOVIN_P293         0.013
+  176     USER_DEF    VFYYEILNS 143B_BOVIN_P293         0.011
+  177     USER_DEF    FYYEILNSP 143B_BOVIN_P293         0.031
+  178     USER_DEF    YYEILNSPE 143B_BOVIN_P293         0.035
+  179     USER_DEF    YEILNSPEK 143B_BOVIN_P293         0.028
+  180     USER_DEF    EILNSPEKA 143B_BOVIN_P293         0.022
+  181     USER_DEF    ILNSPEKAC 143B_BOVIN_P293         0.041
+  182     USER_DEF    LNSPEKACS 143B_BOVIN_P293         0.008
+  183     USER_DEF    NSPEKACSL 143B_BOVIN_P293         0.066
+  184     USER_DEF    SPEKACSLA 143B_BOVIN_P293         0.336
+  185     USER_DEF    PEKACSLAK 143B_BOVIN_P293         0.009
+  186     USER_DEF    EKACSLAKT 143B_BOVIN_P293         0.014
+  187     USER_DEF    KACSLAKTA 143B_BOVIN_P293         0.044
+  188     USER_DEF    ACSLAKTAF 143B_BOVIN_P293         0.126
+  189     USER_DEF    CSLAKTAFD 143B_BOVIN_P293         0.016
+  190     USER_DEF    SLAKTAFDE 143B_BOVIN_P293         0.026
+  191     USER_DEF    LAKTAFDEA 143B_BOVIN_P293         0.088
+  192     USER_DEF    AKTAFDEAI 143B_BOVIN_P293         0.046
+  193     USER_DEF    KTAFDEAIA 143B_BOVIN_P293         0.045
+  194     USER_DEF    TAFDEAIAE 143B_BOVIN_P293         0.020
+  195     USER_DEF    AFDEAIAEL 143B_BOVIN_P293         0.074
+  196     USER_DEF    FDEAIAELD 143B_BOVIN_P293         0.004
+  197     USER_DEF    DEAIAELDT 143B_BOVIN_P293         0.008
+  198     USER_DEF    EAIAELDTL 143B_BOVIN_P293         0.060
+  199     USER_DEF    AIAELDTLN 143B_BOVIN_P293         0.014
+  200     USER_DEF    IAELDTLNE 143B_BOVIN_P293         0.016
+  201     USER_DEF    AELDTLNEE 143B_BOVIN_P293         0.007
+  202     USER_DEF    ELDTLNEES 143B_BOVIN_P293         0.016
+  203     USER_DEF    LDTLNEESY 143B_BOVIN_P293         0.017
+  204     USER_DEF    DTLNEESYK 143B_BOVIN_P293         0.007
+  205     USER_DEF    TLNEESYKD 143B_BOVIN_P293         0.007
+  206     USER_DEF    LNEESYKDS 143B_BOVIN_P293         0.005
+  207     USER_DEF    NEESYKDST 143B_BOVIN_P293         0.011
+  208     USER_DEF    EESYKDSTL 143B_BOVIN_P293         0.048
+  209     USER_DEF    ESYKDSTLI 143B_BOVIN_P293         0.035
+  210     USER_DEF    SYKDSTLIM 143B_BOVIN_P293         0.116
+  211     USER_DEF    YKDSTLIMQ 143B_BOVIN_P293         0.018
+  212     USER_DEF    KDSTLIMQL 143B_BOVIN_P293         0.034
+  213     USER_DEF    DSTLIMQLL 143B_BOVIN_P293         0.028
+  214     USER_DEF    STLIMQLLR 143B_BOVIN_P293         0.021
+  215     USER_DEF    TLIMQLLRD 143B_BOVIN_P293         0.012
+  216     USER_DEF    LIMQLLRDN 143B_BOVIN_P293         0.026
+  217     USER_DEF    IMQLLRDNL 143B_BOVIN_P293         0.120
+  218     USER_DEF    MQLLRDNLT 143B_BOVIN_P293         0.025
+  219     USER_DEF    QLLRDNLTL 143B_BOVIN_P293         0.084
+  220     USER_DEF    LLRDNLTLW 143B_BOVIN_P293         0.088
+  221     USER_DEF    LRDNLTLWT 143B_BOVIN_P293         0.024
+  222     USER_DEF    RDNLTLWTS 143B_BOVIN_P293         0.009
+  223     USER_DEF    DNLTLWTSE 143B_BOVIN_P293         0.008
+  224     USER_DEF    NLTLWTSEN 143B_BOVIN_P293         0.023
+  225     USER_DEF    LTLWTSENQ 143B_BOVIN_P293         0.013
+  226     USER_DEF    TLWTSENQG 143B_BOVIN_P293         0.016
+  227     USER_DEF    LWTSENQGD 143B_BOVIN_P293         0.003
+  228     USER_DEF    WTSENQGDE 143B_BOVIN_P293         0.020
+  229     USER_DEF    TSENQGDEG 143B_BOVIN_P293         0.007
+  230     USER_DEF    SENQGDEGD 143B_BOVIN_P293         0.003
+  231     USER_DEF    ENQGDEGDA 143B_BOVIN_P293         0.011
+  232     USER_DEF    NQGDEGDAG 143B_BOVIN_P293         0.005
+  233     USER_DEF    QGDEGDAGE 143B_BOVIN_P293         0.005
+  234     USER_DEF    GDEGDAGEG 143B_BOVIN_P293         0.003
+  235     USER_DEF    DEGDAGEGE 143B_BOVIN_P293         0.002
+  236     USER_DEF    EGDAGEGEN 143B_BOVIN_P293         0.008
+-----------------------------------------------------------------------------------
+
+Protein 143B_BOVIN_P293. Allele USER_DEF. Number of high binders 0. Number of weak binders 0. Number of peptides 237
+
+-----------------------------------------------------------------------------------

@@ -10,7 +10,6 @@
 ./netMHC/netMHC-3.4/netMHC -a HLA-A02:01 -p ./netMHC/netMHC-3.4/test/test.pep > ./netMHC/netMHC-3.4/test/test.pep.myout
 
 
-
 # testing pickpocket
 
 ./pickpocket/pickpocket-1.1/PickPocket -p ./pickpocket/pickpocket-1.1/test/test.pep > ./pickpocket/pickpocket-1.1/test/test.pep.myout
@@ -33,6 +32,7 @@ more ./netMHCcons/netMHCcons-1.1/test/test.pep.myout
 
 
 # test different lengths
+
 ./netMHC/netMHC-3.4/netMHC -a HLA-A02:01 -p ./netMHCcons/netMHCcons-1.1/test/test2.pep
 ./netMHCcons/netMHCcons-1.1/netMHCcons -inptype 1 -a HLA-B78:07 -f ./netMHCcons/netMHCcons-1.1/test/test2.pep > ./netMHCcons/netMHCcons-1.1/test/test2.pep.myout
 
@@ -50,7 +50,6 @@ wc /home/witold/prog/SysteMHC_Binaries/netMHCcons/netMHCcons-1.1/test/test8.pep
 
 
 ./netMHC/netMHC-3.4/netMHC -a HLA-A02:01 -p /home/witold/prog/SysteMHC_Binaries/netMHCcons/netMHCcons-1.1/test/test8_15.pep > /home/witold/prog/systemhccake/systemhccake/test8_15.pep.txt
-
 ./netMHC/netMHC-3.4/netMHC -a HLA-A02:01 -p /home/witold/prog/SysteMHC_Binaries/netMHCcons/netMHCcons-1.1/test/test8_15.pep
 
 

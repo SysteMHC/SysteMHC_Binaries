@@ -12,10 +12,10 @@
 
 # full path to the NetMHC-3.4 directory (mandatory)
 #setenv	NMHOME	/usr/cbs/packages/netMHC/3.4/netMHC-3.4
-setenv	NMHOME	/home/witold/prog/SysteMHC_Binaries/netMHC/netMHC-3.4
+setenv	NMHOME	$SYSTEMHC/SysteMHC_Binaries/netMHC/netMHC-3.4
 # determine where to store temporary files (must be writable to all users)
-setenv	TMPDIR	/home/witold/prog/temp
 #setenv TMPDIR  /tmp
+setenv	TMPDIR	$SYSTEMHC/temp
 
 # determine platform (do not change this unless you don't have 'uname'!)
 setenv	UNIX	`uname -s`

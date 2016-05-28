@@ -11,19 +11,19 @@
 ###############################################################################
 
 # full path to the NetMHCcons 1.1 directory (mandatory)
-setenv	NCHOME	/home/witold/prog/SysteMHC_Binaries/netMHCcons/netMHCcons-1.1
+setenv	NCHOME	$SYSTEMHC/SysteMHC_Binaries/netMHCcons/netMHCcons-1.1
 
 # full path to the NetMHCpan method (mandatory)
-setenv	NETMHCpan_env	/home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/netMHCpan
+setenv	NETMHCpan_env	$SYSTEMHC/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8/netMHCpan
 
 # full path to the NetMHC method (mandatory)
-setenv	NETMHC_env	/home/witold/prog/SysteMHC_Binaries/netMHC/netMHC-3.4/netMHC
+setenv	NETMHC_env	$SYSTEMHC/SysteMHC_Binaries/netMHC/netMHC-3.4/netMHC
 
 # full path to the PickPocket method (mandatory)
-setenv	PICKPOCKET_env	/home/witold/prog/SysteMHC_Binaries/pickpocket/pickpocket-1.1/PickPocket
+setenv	PICKPOCKET_env	$SYSTEMHC/SysteMHC_Binaries/pickpocket/pickpocket-1.1/PickPocket
 
 # determine where to store temporary files (must be writable to all users)
-setenv TMPDIR /home/witold/prog/temp
+setenv TMPDIR $SYSTEMHC/temp
 
 if ( ${?TMPDIR} == 0 ) then
 	setenv  TMPDIR  /scratch

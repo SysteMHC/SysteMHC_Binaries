@@ -11,9 +11,9 @@
 ###############################################################################
 
 # full path to the PickPocket 1.1 directory (mandatory)
-setenv	NMHOME	/home/witold/prog/SysteMHC_Binaries/pickpocket/pickpocket-1.1
+setenv	NMHOME	$SYSTEMHC/SysteMHC_Binaries/pickpocket/pickpocket-1.1
 # determine where to store temporary files (must be writable to all users)
-setenv TMPDIR /home/witold/prog/temp
+setenv TMPDIR $SYSTEMHC/temp
 
 if ( ${?TMPDIR} == 0 ) then
         setenv  TMPDIR  /scratch

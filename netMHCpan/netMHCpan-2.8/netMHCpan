@@ -13,9 +13,9 @@
 # full path to the NetMHCpan 2.8 directory (mandatory)
 #setenv	NMHOME	/usr/cbs/bio/src/netMHCpan-2.8/
 #setenv	NMHOME	/usr/cbs/packages/netMHCpan/2.8/netMHCpan-2.8
-setenv NMHOME /home/witold/prog/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8
+setenv NMHOME $SYSTEMHC/SysteMHC_Binaries/netMHCpan/netMHCpan-2.8
 # determine where to store temporary files (must be writable to all users)
-setenv TMPDIR /home/witold/prog/temp
+setenv TMPDIR $SYSTEMHC/temp
 if ( ${?TMPDIR} == 0 ) then
 	setenv  TMPDIR  /scratch
 endif

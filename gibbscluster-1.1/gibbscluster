@@ -1,0 +1,35 @@
+#! /bin/tcsh -f
+
+# This the main GibbsCluster 1.1 script. It only acts as the frontend to the
+# software proper, a compiled binary.
+# 
+# VERSION:	2015 Dec 15	launch
+# 
+
+###############################################################################
+#               GENERAL SETTINGS: CUSTOMIZE TO YOUR SITE
+###############################################################################
+
+# Set FULL PATH to the GibbsCluster 1.1 directory (mandatory)
+setenv	GibbsCluster $SYSTEMHC/SysteMHC_Binaries/gibbscluster-1.1/
+
+# determine platform (do not change this unless you don't have 'uname'!)
+setenv	UNIX	`uname -s`
+setenv	AR	`uname -m`
+
+###############################################################################
+#               NOTHING SHOULD NEED CHANGING BELOW THIS LINE!
+###############################################################################
+
+# other settings
+set PLATFORM = `echo $UNIX $AR | awk '{print $1"_"$2}'`
+set GCEXE = $GibbsCluster/bin/gibbs_cluster_1.1.$PLATFORM
+
+# main ========================================================================
+if ( -x $GCEXE ) then
+   $GCEXE $*
+else
+   echo No GibbsCluster executable found for $PLATFORM $GibbsCluster
+endif
+
+# end of script ===============================================================

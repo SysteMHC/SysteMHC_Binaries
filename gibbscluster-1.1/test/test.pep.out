@@ -1,0 +1,168 @@
+# /usr/cbs/bio/src/gibbscluster-1.0/Downloadables/gibbscluster-1.1/bin/gibbs_cluster_1.1.Linux_x86_64 -s 1 test.pep
+# Mon Dec 28 15:34:00 2015
+# User: massimo
+# PWD : /usr/cbs/bio/src/gibbscluster-1.0/Downloadables/gibbscluster-1.1/test
+# Host: Linux padawan 2.6.37.6-0.11-desktop x86_64
+# -s       1                    Seed [-1] Default, [0] Time [>0] Specific seed
+# Command line parameters set to:
+#	[-fast]              0                    Run in FAST mode (recommended for large sets)
+#	[-l int]             9                    Motif length
+#	[-g int]             2                    Number of initial clusters
+#	[-trash]             0                    Use trash cluster to remove outliers
+#	[-i int]             50                   Number of iterations per train example
+#	[-s int]             1                    Seed [-1] Default, [0] Time [>0] Specific seed
+#	[-f filename]        0                    File for frequency matrices
+#	[-m filename]        0                    File for log-odds matrices
+#	[-a filename]        aln.txt              File for multiple alignments
+#	[-pc]                0                    Print core of alignment
+#	[-c filename]        core.txt             File for core
+#	[-alp string]        ARNDCQEGHILKMFPSTWYVBZX Amino acid alphabet
+#	[-bg int]            1                    [0] Flat (0.05) [1] Precalculated [2] From data
+#	[-base float]        0.000000             Baseline value to discard to trash
+#	[-mhc1]              0                    Use peptides of fixed length, no window shift
+#	[-ts float]          0.500000             Start temperature
+#	[-te float]          0.000010             Final temperature
+#	[-nt int]            20                   Number of temperature steps
+#	[-ms int]            3                    Max phase shift distance
+#	[-fs int]            1000                 Interval between Phase shift moves
+#	[-fr int]            10                   Interval between Single sequence moves
+#	[-lambda float]      1.000000             Penalty factor for overlapping clusters
+#	[-sigma float]       10.000000            Weight on blosum for small cluster confidence
+#	[-noph]              0                    Exclude phase shift move
+#	[-r float]           5.000000             Scale factor for phase shift moves
+#	[-wlc float]         200.000000           Weigth on low count
+#	[-blf filename]      /usr/cbs/bio/src/gibbscluster-1.0/Downloadables/gibbscluster-1.1/data/blosum%i.freq_rownorm Real value blosum matrix filename
+#	[-blm int]           62                   Blosum matrix number
+#	[-cX int]            1                    [0] Count X as A, [1] Exclude X from count
+#	[-v]                 0                    Verbose debug mode
+#	[-cthr float]        0.620000             Clustering threshold for sequence weighting
+#	[-swt int]           0                    [0] 1/ns [1] Clustering [2] No sequence weighting
+#	[-w string]          1,3,1,1,1,1,1,1,3    Weigths on positions
+#	[-iw]                0                    Include weights on positions
+#	[-noc float]         0.000000             Log-odds score assignment to no count elements
+#	[-p1a]               0                    Allow only Hydrophobic AA at P1
+#	[-p1l filename]      ILVMFYW              Allowed letters at P1 [Only with -p1a option]
+#	[-factor float]      2.885400             Scale factor for matrix 2/log2
+#	[-cntthr int]        0                    Low bound for amino acids counts to include in matrix
+#	[-p1s]               0                    Penalize disallowed P1 amino acids in shift
+#	[-pkld]              0                    Print KLD list (file to -kldf)
+#	[-kldf string]       kldfq.txt            Print complete list of KLD values to specified file
+#	[-kldq int]          1000                 Total datapoints when printing KLDs
+# Random seed is 1
+# Read 79 elements on seqlist test.pep
+# Number of temperature steps 20 dt 0.024999
+# Back ground frequences
+# 0 A  0.07400
+# 1 R  0.05200
+# 2 N  0.04500
+# 3 D  0.05400
+# 4 C  0.02500
+# 5 Q  0.03400
+# 6 E  0.05400
+# 7 G  0.07400
+# 8 H  0.02600
+# 9 I  0.06800
+# 10 L  0.09900
+# 11 K  0.05800
+# 12 M  0.02500
+# 13 F  0.04700
+# 14 P  0.03900
+# 15 S  0.05700
+# 16 T  0.05100
+# 17 W  0.01300
+# 18 Y  0.03200
+# 19 V  0.07300
+# Read_realblosum done. Alphabet ARNDCQEGHILKMFPSTWYV
+### Initial alignments weighed KLD sum 0.000000
+
+## Sequence alignment for group 0
+#Sequence            Alignment	Annotation	Self	BGgroup	BGscore	Corrected
+Seq1                 -FFVACAPFMSDLQFPMTWH-----	Peplist	7.153	1	1.734	5.419
+Seq2                 -------PERTFGKLPYRNL-----	Peplist	13.166	1	1.677	11.488
+Seq3                 -------PIDPYVVMQVKVPKIRIF	Peplist	7.287	1	4.277	3.010
+Seq4                 -----RQFVSNNGKVPH--------	Peplist	2.468	1	1.008	1.460
+Seq5                 -RTMSGLPAIVREAIEE--------	Peplist	8.543	1	2.702	5.841
+Seq6                 ------VPHISRQRLPWL-------	Peplist	13.881	-1	0.000	13.881
+Seq7                 -----GLPTRCRLEIVHGMG-----	Peplist	6.396	-1	0.000	6.396
+Seq8                 --FTEAQPKPGTRMVPCT-------	Peplist	7.199	-1	0.000	7.199
+Seq9                 -----QIPAFYTPTARV--------	Peplist	5.315	1	2.025	3.290
+Seq10                ---RHLTPKFTRMVVSN--------	Peplist	8.450	-1	0.000	8.450
+Seq11                -----IAPLLSAGIFH---------	Peplist	3.485	1	2.661	0.824
+Seq12                -------RARIKTRLF---------	Peplist	2.723	-1	0.000	2.723
+Seq13                ---GLSPSKRNQTFIPW--------	Peplist	7.092	1	1.158	5.935
+Seq14                ----VNSPADERAVANFW-------	Peplist	5.916	-1	0.000	5.916
+Seq15                -----LLPTNAVVKMKK--------	Peplist	6.417	1	2.073	4.344
+Seq16                FRDHGATSIYTIERAPMFW------	Peplist	7.713	1	2.716	4.997
+Seq17                -EKKDFRAYRNALSMPIRMN-----	Peplist	7.090	1	2.494	4.596
+Seq18                -----HEPVYPGIKVRQLT------	Peplist	8.868	1	2.946	5.922
+Seq19                FESMTLVPVLEKALMPK--------	Peplist	10.938	1	4.239	6.699
+Seq20                -------PCYKPESRPFDL------	Peplist	6.898	-1	0.000	6.898
+Seq21                -EMQHRFPIAKVEPVQKQK------	Peplist	6.289	1	4.539	1.751
+Seq22                ----MENSTMTIREFPRKSYVM---	Peplist	7.577	1	3.920	3.657
+Seq23                -TRPLRMPAYIRNTLYQA-------	Peplist	8.845	1	2.489	6.356
+Seq24                ------KLAQVRRAMCAD-------	Peplist	3.460	1	0.230	3.230
+Seq25                ------KLRETGAPLP---------	Peplist	4.232	1	2.060	2.173
+Seq26                ---QRFYPIVIAPAMNEDSH-----	Peplist	9.988	1	1.641	8.347
+Seq27                ---NHCRPRQIAMSLFIM-------	Peplist	9.088	-1	0.000	9.088
+Seq28                ---QCRFPASFFIKLFPFM------	Peplist	7.340	1	2.741	4.599
+Seq29                -MYMVYVPHVIEEVMRLSL------	Peplist	7.174	1	1.365	5.809
+Seq30                -----WHPAQLFKPLTKKFMD----	Peplist	8.499	1	7.335	1.164
+Seq31                -CTVHQLPAIIRPSFW---------	Peplist	9.813	-1	0.000	9.813
+Seq32                -------GTEDAPKRPPSAF-----	Peplist	3.833	-1	0.000	3.833
+Seq33                ----IWYPKGPIRFVLAL-------	Peplist	3.854	-1	0.000	3.854
+Seq34                -INSNDFPVRPQVPITRCCC-----	Peplist	9.855	-1	0.000	9.855
+Seq35                ---NWCIPKRNRSILP---------	Peplist	15.073	-1	0.000	15.073
+Seq36                ------SQIQAWPLLPHVIF-----	Peplist	4.720	1	4.193	0.527
+Seq37                --KFVNSPLQLRFRMII--------	Peplist	7.369	1	1.156	6.213
+Seq38                ------RPPIFIRRLPSCHN-----	Peplist	10.507	1	3.458	7.048
+                     .......*********
+## Sequence alignment for group 1
+#Sequence            Alignment	Annotation	Self	BGgroup	BGscore	Corrected
+Seq1                 ---------LKVSWRWMVY-------	Peplist	4.123	0	1.939	2.184
+Seq2                 ----ANHVGALKISQLQKNFPP----	Peplist	4.928	0	3.399	1.529
+Seq3                 -----EWCETLSERISSKRYGRA---	Peplist	6.455	0	1.577	4.878
+Seq4                 ---------CMYTRVYRRRLAQS---	Peplist	7.528	0	3.451	4.077
+Seq5                 -----MWEPGLIFCHSKKKD------	Peplist	7.065	-1	0.000	7.065
+Seq6                 -------TMCIYQSPVRKLKLAC---	Peplist	9.559	0	5.395	4.164
+Seq7                 --------ILLFYCPQKKKSQAEFWD	Peplist	8.366	0	3.637	4.729
+Seq8                 ----IKRNAVLIDAGLPKLQ------	Peplist	4.291	0	4.267	0.024
+Seq9                 -----LYDSFTYLCGFIKSLCC----	Peplist	6.087	0	0.036	6.051
+Seq10                ----LWRRTKLMSNIKMNC-------	Peplist	5.370	0	3.327	2.043
+Seq11                ------YVVMMVIFRLMRDT------	Peplist	5.673	0	1.954	3.718
+Seq12                --------RTLHPFGCKSN-------	Peplist	3.183	-1	0.000	3.183
+Seq13                ---GYHNSPASFFSSWVQA-------	Peplist	5.922	0	3.927	1.996
+Seq14                --------PALYSYASAKWW------	Peplist	11.495	0	1.264	10.231
+Seq15                ------GVFKMGAFMYTKTYD-----	Peplist	4.311	0	0.006	4.305
+Seq16                ------EIYALLAVGATKGA------	Peplist	6.909	-1	0.000	6.909
+Seq17                ---------EINEWLSSKDRR-----	Peplist	6.245	-1	0.000	6.245
+Seq18                --------VAMSTWSFYH--------	Peplist	7.216	0	0.297	6.919
+Seq19                --------KYLYLWSFKPTMQ-----	Peplist	10.157	0	2.868	7.289
+Seq20                -----HQPHRVMANNVKKDIII----	Peplist	5.047	0	1.871	3.176
+Seq21                -----QRHDTLARSICEK--------	Peplist	5.792	-1	0.000	5.792
+Seq22                -------RGRIYKRSLKLDDLLS---	Peplist	4.811	0	2.581	2.230
+Seq23                ---------DLFFWYTNEIIGYKVAL	Peplist	7.452	-1	0.000	7.452
+Seq24                ---------AVLQSGFRK--------	Peplist	10.654	-1	0.000	10.654
+Seq25                -----IILAALFMYYTKYW-------	Peplist	8.809	0	1.277	7.532
+Seq26                -----DIKDAVYSICKFY--------	Peplist	3.157	0	2.661	0.496
+Seq27                --------TALMRWRHPRVVSDS---	Peplist	11.704	0	2.505	9.199
+Seq28                ------FKLALFFIIFNKQFHQI---	Peplist	11.631	0	1.028	10.603
+Seq29                -------DLKVLSHGWAYKA------	Peplist	6.354	-1	0.000	6.354
+Seq30                -------KKTVLEFILQKIFKH----	Peplist	7.802	0	0.300	7.502
+Seq31                -----LFRMKAYKIISLKEVEYF---	Peplist	6.087	0	3.139	2.948
+Seq32                -------TDKLYGLSQGY--------	Peplist	5.101	-1	0.000	5.101
+Seq33                ------AENKLYKMRIPRHL------	Peplist	8.919	0	6.155	2.764
+Seq34                SGTNIILAHFLYKEFTMN--------	Peplist	5.735	0	1.802	3.933
+Seq35                ----YIDQMCVFKFIVAKS-------	Peplist	9.505	-1	0.000	9.505
+Seq36                -------HEALDGTFQRKYMAF----	Peplist	3.810	0	1.948	1.862
+Seq37                ------FAGALIRATSTRIGDG----	Peplist	6.378	0	1.218	5.160
+Seq38                -----HLVNAISRLRTQKANSIC---	Peplist	7.467	0	3.235	4.232
+Seq39                --------SAIFASSMTKTN------	Peplist	10.105	0	4.340	5.765
+Seq40                --GDGGTRVAVNKSNKQRHS------	Peplist	5.780	-1	0.000	5.780
+Seq41                ----SDCDQMVIENGILKNK------	Peplist	4.677	-1	0.000	4.677
+                     .........*********
+# group 0, size 38: Final KLD sum after 79000 epochs - 5.728280
+# group 1, size 41: Final KLD sum after 79000 epochs - 5.128196
+#
+# Final number of non-empty clusters: 2
+
+### Final KLD sum after 79000 iterations: 5.416844
